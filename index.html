@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Les mises à jour de la Constitution — EMC 3e, séance 4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Lexend:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bleu:#000091; --bleu-txt:#000091; --bleu-soft:#E3E3FD; --rouge:#C9191E; --rouge-soft:#FDE8E8;
+  --or:#C8A24A; --bg:#F3F3FC; --surface:#FFFFFF; --surface2:#F6F6FF; --ink:#161616; --muted:#3F3F55;
+  --line:#BDBDD8; --head:#000091; --on-head:#FFFFFF; --btn:#000091; --btn-ink:#FFFFFF; --focus:#C9191E;
+  --font:"Atkinson Hyperlegible", Verdana, Tahoma, sans-serif; --lh:1.55; --ls:0; --ws:0;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]):not([data-contrast="high"]){
+    --bleu:#8C8CF7; --bleu-txt:#B8B8FF; --bleu-soft:#22224A; --rouge:#FF7A7E; --rouge-soft:#3D1C1F;
+    --bg:#11112A; --surface:#1A1A38; --surface2:#20204A; --ink:#EEF0FA; --muted:#C2C4DA; --line:#40406E;
+    --head:#0B0B5C; --btn:#8C8CF7; --btn-ink:#0B0B2A; --focus:#FF7A7E;
+  }
+}
+:root[data-theme="dark"]:not([data-contrast="high"]){
+  --bleu:#8C8CF7; --bleu-txt:#B8B8FF; --bleu-soft:#22224A; --rouge:#FF7A7E; --rouge-soft:#3D1C1F;
+  --bg:#11112A; --surface:#1A1A38; --surface2:#20204A; --ink:#EEF0FA; --muted:#C2C4DA; --line:#40406E;
+  --head:#0B0B5C; --btn:#8C8CF7; --btn-ink:#0B0B2A; --focus:#FF7A7E;
+}
+:root[data-contrast="high"]{
+  --bleu:#FFE600; --bleu-txt:#FFE600; --bleu-soft:#000; --rouge:#FFE600; --rouge-soft:#000; --or:#FFE600;
+  --bg:#000; --surface:#000; --surface2:#000; --ink:#FFF; --muted:#FFF; --line:#FFF;
+  --head:#000; --btn:#FFE600; --btn-ink:#000; --focus:#00E5FF;
+}
+:root[data-font="lexend"]{ --font:"Lexend", Verdana, Tahoma, sans-serif; --ls:.035em; --ws:.12em; }
+:root[data-spacing="wide"]{ --lh:1.9; }
+:root[data-size="l"]{ font-size:118%; }
+:root[data-size="xl"]{ font-size:138%; }
+html{ scroll-padding-top:env(safe-area-inset-top,0px); }
+*,*::before,*::after{ box-sizing:inherit; }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); font-size:1.0625rem;
+  line-height:var(--lh); letter-spacing:var(--ls); word-spacing:var(--ws); }
+:root[data-contrast="high"] *{ border-color:#FFF !important; }
+button,select,input,textarea{ font:inherit; letter-spacing:inherit; word-spacing:inherit; color:inherit; }
+:focus-visible{ outline:4px solid var(--focus); outline-offset:3px; }
+.sr{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+.skip{ position:absolute; left:10px; top:-60px; background:var(--rouge); color:#fff; padding:8px 14px; z-index:99; }
+.skip:focus{ top:10px; }
+@media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
+:root[data-motion="off"] *{ animation:none !important; transition:none !important; }
+
+/* ===== Bandeau tricolore et en-tête ===== */
+.tricolore{ display:flex; height:8px; } .tricolore span{ flex:1; }
+.tricolore .b{ background:#000091; } .tricolore .w{ background:#FFFFFF; } .tricolore .r{ background:#E1000F; }
+header{ position:sticky; top:0; z-index:30; background:var(--head); color:var(--on-head); padding-top:env(safe-area-inset-top,0px); }
+:root[data-contrast="high"] header{ border-bottom:2px solid #FFF; }
+.bar{ max-width:1040px; margin:0 auto; display:flex; align-items:center; gap:.9rem; padding:.55rem 1rem; flex-wrap:wrap; }
+.brand{ display:flex; align-items:center; gap:.6rem; margin-right:auto; }
+.brand svg{ width:44px; height:44px; flex:none; }
+.brand b{ display:block; font-size:1.05rem; line-height:1.15; }
+.brand small{ display:block; font-size:.85rem; opacity:.9; }
+.dossier{ display:flex; align-items:center; gap:.45rem; }
+.dossier-label{ font-size:.85rem; }
+.digits{ display:flex; gap:.3rem; }
+.digit{ width:2.2rem; height:2.7rem; display:grid; place-items:center; font-size:1.55rem; font-weight:700;
+  border:2px dashed rgba(255,255,255,.75); border-radius:6px; color:#fff; }
+.digit.on{ background:#E1000F; border:2px solid #fff; color:#fff; }
+:root[data-contrast="high"] .digit.on{ background:#FFE600; color:#000; }
+.digit.on.pop{ animation:stamp .5s ease-out; }
+@keyframes stamp{ 0%{transform:scale(1.7) rotate(-10deg); opacity:0} 100%{transform:none; opacity:1} }
+.hbtn{ background:transparent; border:2px solid #fff; color:#fff; border-radius:8px; padding:.35rem .75rem; min-height:42px; cursor:pointer; font-weight:700; }
+.hbtn.stop{ display:none; } .hbtn.stop.show{ display:inline-block; }
+.profbar{ background:#E1000F; color:#fff; text-align:center; padding:.35rem 1rem; font-weight:700; }
+.profbar button{ margin-left:.6rem; background:#fff; color:#C9191E; border:0; border-radius:6px; padding:.2rem .6rem; font-weight:700; cursor:pointer; }
+
+nav.steps{ background:var(--surface); border-bottom:2px solid var(--line); }
+nav.steps ol{ list-style:none; display:flex; gap:.4rem; margin:0 auto; padding:.5rem 1rem; flex-wrap:wrap; max-width:1040px; }
+nav.steps button{ background:transparent; border:2px solid var(--line); border-radius:999px; padding:.3rem .85rem; cursor:pointer; min-height:40px; color:var(--ink); }
+nav.steps button[aria-current="step"]{ border-color:var(--bleu); background:var(--bleu-soft); font-weight:700; }
+nav.steps button[disabled]{ opacity:.45; cursor:not-allowed; }
+nav.steps .mark{ color:var(--rouge); font-weight:700; }
+
+main{ max-width:1040px; margin:0 auto; padding:1.2rem 1rem 6rem; }
+h1{ font-size:1.9rem; line-height:1.2; margin:.3rem 0 .7rem; color:var(--bleu-txt); }
+h2{ font-size:1.35rem; margin:1.4rem 0 .5rem; color:var(--bleu-txt); }
+h3{ font-size:1.12rem; margin:1rem 0 .4rem; }
+p{ max-width:74ch; }
+.panel{ background:var(--surface); border:2px solid var(--line); border-radius:10px; padding:1rem 1.1rem; margin:.8rem 0; }
+.consigne{ border-left:8px solid var(--bleu); }
+.enjeu{ border:3px solid var(--rouge); background:var(--rouge-soft); border-radius:10px; padding:1rem 1.1rem; margin:1rem 0; }
+.enjeu h2{ color:var(--rouge); margin-top:0; }
+:root[data-contrast="high"] .enjeu h2{ color:#FFE600; }
+.archive{ border:2px solid var(--or); background:var(--surface); border-radius:10px; padding:1rem 1.1rem; margin:1rem 0; position:relative; }
+.archive .tag{ display:inline-block; background:var(--or); color:#1A1400; font-weight:700; border-radius:4px; padding:.1rem .5rem; margin-bottom:.4rem; }
+.btn{ border:2px solid var(--btn); background:var(--btn); color:var(--btn-ink); border-radius:8px; padding:.65rem 1.1rem; font-weight:700; cursor:pointer; min-height:48px; }
+.btn.ghost{ background:transparent; color:var(--ink); border-color:var(--line); }
+.btn.rouge{ background:#C9191E; border-color:#C9191E; color:#fff; }
+:root[data-contrast="high"] .btn.rouge{ background:#FFE600; color:#000; }
+.btn.small{ min-height:40px; padding:.35rem .75rem; font-size:.95rem; }
+.btn[disabled]{ opacity:.45; cursor:not-allowed; }
+.speak{ background:var(--surface); border:2px solid var(--line); border-radius:8px; padding:.25rem .65rem; cursor:pointer; min-height:38px; color:var(--ink); white-space:nowrap; font-size:.95rem; }
+.speak::before{ content:"🔊 "; }
+.actions{ display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem; align-items:center; }
+
+/* ===== Accueil ===== */
+.hero{ background:var(--head); color:#fff; border-radius:14px; padding:1.4rem; display:grid; grid-template-columns:auto 1fr; gap:1.4rem; align-items:center; position:relative; overflow:hidden; }
+.hero::after{ content:""; position:absolute; right:0; top:0; bottom:0; width:14px; background:linear-gradient(#000091 0 33.3%,#fff 33.3% 66.6%,#E1000F 66.6%); }
+:root[data-contrast="high"] .hero{ border:3px solid #fff; }
+.hero svg.seal{ width:190px; height:190px; }
+.hero h1{ color:#fff; font-size:clamp(1.7rem,4.2vw,2.6rem); margin:0 0 .3rem; }
+.hero .lieu{ font-size:1.05rem; opacity:.95; margin:0; }
+@media (max-width:700px){ .hero{ grid-template-columns:1fr; text-align:center; } .hero svg.seal{ margin:0 auto; width:150px; height:150px; } }
+.grid2{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+@media (max-width:760px){ .grid2{ grid-template-columns:1fr; } }
+ol.plan{ padding-left:1.4rem; margin:.3rem 0; } ol.plan li{ margin:.3rem 0; }
+.levels{ display:grid; grid-template-columns:repeat(3,1fr); gap:.7rem; }
+@media (max-width:760px){ .levels{ grid-template-columns:1fr; } }
+.level{ text-align:left; background:var(--surface); border:3px solid var(--line); border-radius:10px; padding:.9rem; cursor:pointer; color:var(--ink); }
+.level[aria-pressed="true"]{ border-color:var(--bleu); background:var(--bleu-soft); }
+.level[aria-pressed="true"] .lv-name::after{ content:"  ✓ choisi"; font-weight:400; }
+.lv-name{ font-weight:700; font-size:1.1rem; display:block; color:var(--bleu-txt); }
+.serment{ background:var(--surface); border:3px double var(--bleu); border-radius:12px; padding:1.1rem 1.2rem; margin-top:1rem; }
+.serment blockquote{ margin:.4rem 0 .8rem; font-size:1.15rem; font-style:italic; border-left:6px solid var(--rouge); padding-left:.8rem; }
+:root[data-font="lexend"] .serment blockquote{ font-style:normal; }
+
+/* ===== Minuteur ===== */
+.timer{ display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; font-size:.95rem; color:var(--muted); }
+.timer .track{ width:160px; height:10px; border:2px solid var(--line); border-radius:6px; overflow:hidden; }
+.timer .fill{ height:100%; background:var(--bleu); }
+
+/* ===== Mission : bandeau ===== */
+.mhead{ display:flex; align-items:stretch; border-radius:10px; overflow:hidden; margin:.2rem 0 .8rem; }
+.mhead .num{ background:#E1000F; color:#fff; font-size:1.6rem; font-weight:700; padding:.4rem 1rem; display:flex; align-items:center; }
+.mhead h1{ background:var(--head); color:#fff; margin:0; padding:.6rem 1rem; font-size:clamp(1.25rem,3vw,1.7rem); flex:1; }
+:root[data-contrast="high"] .mhead{ border:2px solid #fff; }
+:root[data-contrast="high"] .mhead .num{ background:#FFE600; color:#000; }
+
+/* ===== Cartes et pyramide ===== */
+.tray{ display:flex; flex-wrap:wrap; gap:.6rem; }
+.card{ text-align:left; background:var(--surface); border:3px solid var(--line); border-radius:10px; padding:.6rem .8rem; cursor:pointer; min-height:48px; max-width:100%; color:var(--ink); }
+.card[aria-pressed="true"]{ border-color:var(--bleu); background:var(--bleu-soft); box-shadow:0 0 0 3px var(--bleu) inset; }
+.card[aria-pressed="true"]::before{ content:"➜ sélectionnée : "; font-weight:700; }
+.card .qui{ display:block; font-size:.9rem; color:var(--muted); }
+.pyramid{ display:flex; flex-direction:column; align-items:center; gap:.45rem; margin:.8rem 0; }
+.slot{ border:3px dashed var(--line); border-radius:10px; background:var(--surface2); min-height:58px; padding:.5rem .8rem; cursor:pointer; text-align:center; color:var(--ink); display:flex; align-items:center; justify-content:center; }
+.slot:first-child{ border-top:6px solid #E1000F; }
+.slot.filled{ border-style:solid; border-color:var(--bleu); background:var(--surface); }
+.slot.locked{ cursor:default; }
+.slot .floor{ font-size:.8rem; color:var(--muted); display:block; }
+.slot.good{ border-width:4px; } .slot.bad{ border-color:var(--rouge); border-style:dotted; border-width:4px; }
+.fb{ font-weight:700; padding:.1rem .5rem; border-radius:6px; display:inline-block; margin-top:.3rem; }
+.fb.good{ background:var(--bleu-soft); border:2px solid var(--bleu); } .fb.good::before{ content:"✓ "; }
+.fb.bad{ background:var(--rouge-soft); border:2px dotted var(--rouge); } .fb.bad::before{ content:"✗ "; }
+.mots{ display:flex; flex-wrap:wrap; gap:.3rem .9rem; align-items:baseline; }
+
+/* ===== Coffres ===== */
+.shape{ display:inline-block; width:1.1em; height:1.1em; vertical-align:-.15em; margin-right:.25em; }
+.choices{ display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.4rem; }
+.choice{ border:2px solid var(--line); background:var(--surface); border-radius:8px; padding:.35rem .7rem; cursor:pointer; min-height:44px; color:var(--ink); text-align:left; }
+.choice[aria-pressed="true"]{ border:3px solid var(--bleu); background:var(--bleu-soft); font-weight:700; }
+.choice[aria-pressed="true"]::after{ content:" ✓"; }
+.coffres{ display:grid; grid-template-columns:repeat(3,1fr); gap:.7rem; }
+@media (max-width:760px){ .coffres{ grid-template-columns:1fr; } }
+.coffre{ border:3px solid var(--line); border-radius:10px; padding:.7rem; background:var(--surface); }
+.coffre h3{ margin:.1rem 0 .3rem; }
+select{ width:100%; min-height:44px; border:2px solid var(--line); border-radius:8px; background:var(--surface); padding:.3rem; }
+textarea{ width:100%; min-height:4.5rem; border:2px solid var(--line); border-radius:8px; background:var(--surface); padding:.5rem; }
+.kw{ background:#FFF1B8; color:#161616; border-bottom:3px solid #C9191E; font-weight:700; padding:0 .15em; }
+:root[data-contrast="high"] .kw{ background:#FFE600; color:#000; }
+
+/* ===== Saisines ===== */
+.saisine{ background:var(--surface); border:2px solid var(--line); border-radius:12px; padding:0; margin:1rem 0; overflow:hidden; }
+.saisine .sh{ background:var(--bleu-soft); border-bottom:2px solid var(--line); padding:.6rem 1rem; display:flex; gap:.6rem; flex-wrap:wrap; align-items:center; }
+.saisine .sh h2{ margin:0; font-size:1.15rem; }
+.badge{ font-size:.85rem; font-weight:700; border-radius:999px; padding:.1rem .6rem; border:2px solid; }
+.badge.reel{ border-color:var(--bleu); color:var(--bleu-txt); background:var(--surface); }
+.badge.fictif{ border-color:var(--rouge); color:var(--rouge); background:var(--surface); border-style:dashed; }
+:root[data-contrast="high"] .badge.fictif{ color:#FFE600; }
+.saisine .sb{ padding:.8rem 1rem 1rem; }
+.case-text{ font-size:1.12rem; }
+.decision{ border-left:6px solid var(--bleu); background:var(--surface2); padding:.6rem .9rem; border-radius:6px; margin-top:.7rem; }
+
+.hints{ border-left:8px solid var(--or); }
+.m3grid{ display:grid; grid-template-columns:minmax(280px,360px) 1fr; gap:1rem; align-items:start; }
+@media (max-width:860px){ .m3grid{ grid-template-columns:1fr; } }
+.dossier-ref{ background:var(--surface); border:3px solid var(--or); border-radius:12px; position:sticky; top:110px; max-height:calc(100vh - 130px); overflow:auto; }
+@media (max-width:860px){ .dossier-ref{ position:static; max-height:none; } }
+.dossier-ref summary{ cursor:pointer; padding:.7rem 1rem; background:var(--or); color:#1A1400; font-weight:700; list-style:none; }
+.dossier-ref summary::-webkit-details-marker{ display:none; }
+.dossier-ref summary::before{ content:"▸ "; } .dossier-ref[open] summary::before{ content:"▾ "; }
+.dossier-ref .inner{ padding:.4rem .9rem .8rem; }
+.dossier-ref h3{ font-size:1rem; margin:.8rem 0 .3rem; color:var(--bleu-txt); }
+.art{ border-left:5px solid var(--line); padding:.3rem .6rem; margin:.5rem 0; }
+.art .ref{ font-weight:700; display:block; }
+.methode{ background:var(--bleu-soft); border:2px solid var(--bleu); border-radius:10px; padding:.7rem 1rem; margin:.8rem 0; }
+.methode ol{ margin:.3rem 0; padding-left:1.4rem; } .methode li{ margin:.25rem 0; }
+.success{ border:3px solid #E1000F; background:var(--rouge-soft); border-radius:10px; padding:1rem; }
+:root[data-contrast="high"] .success{ border-color:#FFE600; }
+.success strong.code{ font-size:2rem; color:var(--rouge); letter-spacing:.1em; }
+.profbox{ border:3px dashed #E1000F; background:var(--rouge-soft); border-radius:10px; padding:.8rem 1rem; margin:.8rem 0; }
+.profbox h2{ color:var(--rouge); margin-top:0; font-size:1.15rem; }
+.answer{ display:block; font-size:.9rem; font-weight:700; color:var(--rouge); margin-top:.2rem; }
+.answer::before{ content:"Réponse : "; }
+
+/* ===== Glossaire (comme l'activité sur Staline) ===== */
+button.g{ background:none; border:0; padding:0; color:inherit; font:inherit; cursor:help;
+  text-decoration:underline dotted var(--bleu) 2px; text-underline-offset:3px; }
+.hero button.g{ text-decoration-color:#fff; }
+#bulle{ position:absolute; z-index:70; max-width:330px; background:#000091; color:#fff; padding:.7rem .9rem .6rem; border-radius:8px;
+  line-height:1.45; box-shadow:6px 6px 0 #E1000F; display:none; }
+:root[data-contrast="high"] #bulle{ background:#000; border:3px solid #FFE600; box-shadow:none; }
+#bulle b{ display:block; font-size:1.02rem; margin-bottom:.15rem; }
+#bulle .brow{ display:flex; gap:.4rem; margin-top:.5rem; }
+#bulle button{ background:#fff; color:#000091; border:0; border-radius:6px; padding:.2rem .6rem; font-weight:700; cursor:pointer; min-height:36px; }
+
+/* ===== Lexique / réglages ===== */
+dialog{ border:3px solid var(--line); border-radius:12px; background:var(--surface); color:var(--ink); max-width:640px; width:94vw; padding:1.2rem; }
+dialog::backdrop{ background:rgba(0,0,40,.6); }
+dl.lex dt{ font-weight:700; color:var(--bleu-txt); margin-top:.6rem; }
+dl.lex dd{ margin:0 0 0 .2rem; }
+fieldset{ border:2px solid var(--line); border-radius:8px; margin:.6rem 0; padding:.5rem .8rem; }
+legend{ font-weight:700; padding:0 .3rem; }
+.opt{ display:flex; gap:.5rem; flex-wrap:wrap; }
+.opt label{ display:flex; align-items:center; gap:.35rem; border:2px solid var(--line); border-radius:8px; padding:.3rem .6rem; min-height:44px; cursor:pointer; }
+.opt input{ width:1.2rem; height:1.2rem; }
+#aa{ position:fixed; right:16px; bottom:calc(16px + env(safe-area-inset-bottom,0px)); z-index:40; background:#000091; color:#fff; border:3px solid #fff; border-radius:10px;
+  padding:.7rem 1rem; font-weight:700; box-shadow:4px 4px 0 #E1000F; cursor:pointer; }
+:root[data-contrast="high"] #aa{ background:#000; border-color:#FFE600; color:#FFE600; box-shadow:none; }
+@media (max-width:600px){ #aa .lib{ display:none; } }
+footer{ max-width:1040px; margin:0 auto; padding:1rem; color:var(--muted); font-size:.9rem; display:flex; gap:1rem; flex-wrap:wrap; align-items:center; }
+footer button{ background:none; border:0; color:var(--muted); text-decoration:underline; cursor:pointer; padding:.3rem 0; }
+
+/* ===== Accroche / décision ===== */
+.proj .situation{ font-size:clamp(1.3rem,3.2vw,2rem); line-height:1.35; margin:.2rem 0; }
+.proj .num{ font-weight:700; color:var(--rouge); }
+.decision-head{ display:grid; grid-template-columns:auto 1fr; gap:1.2rem; align-items:center; }
+.decision-head svg{ width:150px; height:150px; animation:stamp .7s ease-out; }
+@media (max-width:640px){ .decision-head{ grid-template-columns:1fr; text-align:center; } .decision-head svg{ margin:0 auto; } }
+.trace strong{ text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:3px; }
+input.codein{ font-size:2rem; letter-spacing:.3em; width:9rem; text-align:center; border:3px solid var(--line); border-radius:8px; background:var(--surface); padding:.3rem; }
+table.corr{ border-collapse:collapse; width:100%; background:var(--surface); }
+table.corr th, table.corr td{ border:1px solid var(--line); padding:.45rem .55rem; text-align:left; vertical-align:top; }
+table.corr th{ background:var(--bleu-soft); }
+.tbl{ overflow-x:auto; }
+
+.wtile{ min-width:2.4rem; height:2.5rem; padding:0 .5rem; display:grid; place-items:center; font-size:1rem; font-weight:700; border:2px dashed rgba(255,255,255,.75); border-radius:6px; color:#fff; white-space:nowrap; }
+.wtile.on{ background:#E1000F; border:2px solid #fff; }
+:root[data-contrast="high"] .wtile.on{ background:#FFE600; color:#000; }
+.wtile.on.pop{ animation:stamp .5s ease-out; }
+nav.frise ol{ list-style:none; display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin:.4rem 0 1rem; padding:0; position:relative; }
+nav.frise ol::before{ content:""; position:absolute; left:8%; right:8%; top:1.05rem; height:4px; background:var(--line); }
+nav.frise li{ position:relative; text-align:center; padding:0 .3rem; color:var(--muted); }
+nav.frise .y{ display:inline-block; background:var(--surface); border:3px solid var(--line); border-radius:999px; padding:.05rem .7rem; font-weight:700; position:relative; }
+nav.frise .l{ display:block; font-size:.9rem; margin-top:.25rem; }
+nav.frise li.on{ color:var(--ink); font-weight:700; }
+nav.frise li.on .y{ background:#E1000F; border-color:#E1000F; color:#fff; }
+:root[data-contrast="high"] nav.frise li.on .y{ background:#FFE600; border-color:#FFE600; color:#000; }
+nav.frise li.on .y::after{ content:" ●"; font-size:.7em; }
+.doc .tag, .archive .tag{ display:inline-block; background:var(--or); color:#1A1400; font-weight:700; border-radius:4px; padding:.1rem .5rem; margin-bottom:.4rem; }
+.doc{ border-top:6px solid var(--bleu); }
+.neutre{ border:2px dashed var(--bleu); background:var(--bleu-soft); border-radius:10px; padding:.6rem .9rem; margin:.8rem 0; }
+.ordlist{ list-style:none; padding:0; margin:.6rem 0; }
+.ordlist li{ display:grid; grid-template-columns:auto 1fr auto; gap:.6rem; align-items:center; background:var(--surface); border:2px solid var(--line); border-radius:10px; padding:.5rem .6rem; margin-bottom:.4rem; }
+.ordlist li.good{ border-color:var(--bleu); border-width:3px; } .ordlist li.bad{ border-color:var(--rouge); border-style:dotted; border-width:3px; }
+.ordlist .n{ background:var(--head); color:#fff; width:2rem; height:2rem; border-radius:50%; display:grid; place-items:center; font-weight:700; }
+.ordlist .date{ display:block; color:var(--rouge); font-weight:700; font-size:.95rem; }
+.ordlist .fl{ display:flex; gap:.3rem; }
+.ordlist .fl button{ width:44px; height:44px; border:2px solid var(--line); background:var(--surface); border-radius:8px; font-weight:700; font-size:1.1rem; cursor:pointer; color:var(--ink); }
+.ordlist .fl button[disabled]{ opacity:.35; cursor:not-allowed; }
+.phrase{ min-height:3.2rem; border:3px dashed var(--bleu); border-radius:10px; padding:.6rem .9rem; font-size:1.4rem; font-weight:700; margin:.6rem 0; background:var(--surface); }
+.choice.tile{ font-size:1.15rem; font-weight:700; }
+h4{ margin:.9rem 0 .3rem; font-size:1.02rem; }
+.schema{ list-style:none; margin:0; padding:0; }
+.schema > li:not(.arrow){ background:var(--surface); border:2px solid var(--line); border-left:10px solid var(--bleu); border-radius:10px; padding:.6rem .8rem; }
+.schema > li.opt{ border-style:dashed; border-left-style:solid; }
+.schema > li.arrow{ text-align:center; font-size:1.4rem; font-weight:700; color:var(--muted); line-height:1.2; }
+.sch-h{ display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; font-size:1.05rem; }
+.sch-n{ background:var(--head); color:#fff; width:1.9rem; height:1.9rem; border-radius:50%; display:grid; place-items:center; font-weight:700; flex:none; }
+.sch-w{ margin:.3rem 0 .1rem; } .sch-d{ margin:.1rem 0 .4rem; }
+.slotbtn{ width:100%; text-align:left; border:3px dashed var(--line); background:var(--surface2); border-radius:8px; padding:.45rem .6rem; min-height:46px; cursor:pointer; color:var(--ink); }
+.slotbtn.filled{ border-style:solid; border-color:var(--bleu); background:var(--bleu-soft); }
+.slotbtn .date{ color:var(--rouge); font-weight:700; }
+.trajet{ display:flex; flex-wrap:wrap; gap:.4rem; align-items:stretch; margin:.6rem 0; padding:0; list-style:none; }
+.trajet li{ flex:1 1 150px; background:var(--surface); border:3px solid var(--line); border-radius:10px; padding:.45rem .55rem; position:relative; font-size:.92rem; }
+.trajet li .td{ display:block; font-weight:700; color:var(--rouge); }
+.trajet li .tp{ display:block; margin-top:.25rem; font-weight:700; }
+.trajet li.L{ border-color:#000091; } .trajet li.E{ border-color:#C9191E; border-style:double; border-width:5px; } .trajet li.C{ border-color:#8A6D00; border-style:dashed; }
+:root[data-contrast="high"] .trajet li{ border-color:#FFF !important; }
+@media (max-width:700px){ nav.frise .l{ font-size:.8rem; } }
+@media (max-width:1280px){ .dossier-label{ display:none; } .bar{ gap:.5rem; } .hbtn{ padding:.3rem .55rem; } }
+
+.scene{ display:grid; grid-template-columns:minmax(220px,340px) 1fr; gap:1.2rem; align-items:center; background:var(--surface); border:2px solid var(--line); border-radius:14px; padding:1rem 1.2rem; margin:.8rem 0; }
+.scene-txt p{ margin:.35rem 0; font-size:1.08rem; }
+@media (max-width:760px){ .scene{ grid-template-columns:1fr; } .scene-ill{ max-width:300px; margin:0 auto; } }
+svg.illu{ width:100%; height:auto; display:block; }
+.hero-ill{ background:#fff; border-radius:12px; padding:.6rem; width:230px; }
+@media (max-width:700px){ .hero-ill{ margin:0 auto; width:200px; } }
+:root[data-contrast="high"] .scene-ill, :root[data-contrast="high"] .hero-ill{ background:#fff; border-radius:10px; padding:.3rem; }
+.big{ font-size:1.25rem; line-height:1.4; }
+.flips{ display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin:.6rem 0; }
+@media (max-width:760px){ .flips{ grid-template-columns:1fr; } }
+.flip{ min-height:150px; border:3px solid var(--bleu); background:var(--head); color:#fff; border-radius:14px; padding:1rem; cursor:pointer; text-align:left; display:flex; flex-direction:column; justify-content:center; gap:.4rem; box-shadow:5px 5px 0 #E1000F; }
+.flip .fl-q{ font-size:1.5rem; font-weight:700; } .flip .fl-tap{ opacity:.9; font-size:.95rem; }
+.flip.open{ background:var(--surface); color:var(--ink); box-shadow:5px 5px 0 var(--bleu); animation:flipin .35s ease-out; }
+.flip.open .fl-h{ font-weight:700; color:var(--rouge); font-size:1.1rem; } .flip.open .fl-b{ font-size:1rem; line-height:1.45; }
+:root[data-contrast="high"] .flip{ background:#000; border-color:#FFE600; box-shadow:none; }
+@keyframes flipin{ 0%{ transform:rotateY(80deg); } 100%{ transform:none; } }
+.teaser{ border:3px solid #E1000F; background:var(--rouge-soft); border-radius:14px; padding:1rem 1.2rem; margin:1rem 0; }
+.retenir{ border-left:8px solid var(--or); background:var(--surface); border-radius:8px; padding:.7rem 1rem; }
+.verdict{ display:grid; grid-template-columns:240px 1fr; gap:1rem; align-items:center; border:3px solid #E1000F; border-radius:14px; background:var(--surface); padding:1rem 1.2rem; margin:1rem 0; }
+.verdict svg.stamp{ width:100%; animation:stamp .6s ease-out; } .verdict svg.seal{ width:160px; height:160px; }
+@media (max-width:700px){ .verdict{ grid-template-columns:1fr; } }
+.cols{ display:grid; grid-template-columns:repeat(4,1fr); gap:.6rem; margin:.6rem 0; }
+@media (max-width:860px){ .cols{ grid-template-columns:repeat(2,1fr); } } @media (max-width:480px){ .cols{ grid-template-columns:1fr; } }
+.col{ background:var(--surface); border:2px solid var(--line); border-radius:10px; padding:.6rem; display:flex; flex-direction:column; gap:.4rem; }
+.col h3{ margin:.1rem 0 0; font-size:1rem; } .col .petit{ margin:0; color:var(--muted); font-size:.9rem; }
+.token{ font-weight:700; }
+.panel.q h3{ font-size:1.08rem; }
+nav.frise ol{ grid-template-columns:repeat(5,1fr) !important; }
+nav.frise li.fait .y{ border-color:var(--bleu); }
+
+figure.photo{ margin:0 0 .6rem; }
+figure.photo .zoombtn{ display:block; position:relative; width:100%; padding:0; border:3px solid var(--line); border-radius:10px; overflow:hidden; background:#fff; cursor:zoom-in; }
+figure.photo img{ display:block; width:100%; height:auto; }
+figure.photo .zoomtag{ position:absolute; right:6px; bottom:6px; background:#000091; color:#fff; border-radius:6px; padding:.1rem .4rem; font-size:.9rem; }
+figure.photo .credit{ display:block; font-style:italic; font-size:.82rem; }
+figure.photo figcaption{ font-size:.9rem; color:var(--muted); margin-top:.25rem; }
+.schema-insti figure.photo{ max-width:900px; }
+#zoomDlg{ max-width:min(1200px,96vw); width:96vw; padding:.8rem; }
+#zoomDlg img{ width:100%; height:auto; max-height:78vh; object-fit:contain; background:#fff; border-radius:8px; }
+
+.ytcard{ display:flex; align-items:center; gap:.8rem; width:min(100%,320px); min-height:120px; padding:1rem; border-radius:14px; background:#000091; color:#fff; border:3px solid #fff; box-shadow:5px 5px 0 #E1000F; text-decoration:none; font-weight:700; font-size:1.1rem; cursor:pointer; text-align:left; }
+.ytcard small{ font-weight:400; font-size:.9rem; }
+.ytplay{ display:grid; place-items:center; width:58px; height:58px; border-radius:50%; background:#E1000F; font-size:1.6rem; flex:none; }
+:root[data-contrast="high"] .ytcard{ background:#000; border-color:#FFE600; color:#FFE600; box-shadow:none; }
+.ytbox{ margin-top:.8rem; border-top:2px dashed var(--line); padding-top:.6rem; }
+.ytframe{ width:min(100%, 300px); aspect-ratio:9/16; border-radius:12px; overflow:hidden; background:#000; border:3px solid var(--line); margin-bottom:.5rem; }
+.ytframe iframe{ width:100%; height:100%; border:0; display:block; }
+.ytbox .petit{ font-size:.88rem; color:var(--muted); margin:.3rem 0 0; }
+
+.gauge{ margin:.8rem 0 .4rem; }
+.g-track{ position:relative; height:34px; border:3px solid #1B1B3A; border-radius:8px; background:var(--surface2); }
+.g-fill{ height:100%; background:#E1000F; border-radius:4px 0 0 4px; display:flex; align-items:center; justify-content:flex-start; padding-left:.5rem; color:#fff; font-weight:700; animation:grow 1s ease-out; }
+@keyframes grow{ from{ width:0; } }
+.g-mark{ position:absolute; top:-8px; bottom:-8px; width:4px; background:#000091; }
+.g-mark span{ position:absolute; top:44px; left:-4px; white-space:nowrap; font-weight:700; font-size:.9rem; color:var(--bleu-txt); }
+.g-scale{ display:flex; justify-content:space-between; font-size:.85rem; color:var(--muted); margin-top:1.6rem; }
+:root[data-contrast="high"] .g-fill{ background:#FFE600; color:#000; } :root[data-contrast="high"] .g-mark{ background:#00E5FF; }
+.aussi{ border:2px dashed #6A3FA0; border-radius:12px; background:var(--surface); padding:.7rem 1rem; margin:.8rem 0; }
+.ytframe.wide{ width:min(100%, 720px) !important; aspect-ratio:16/9 !important; }
+.ytbox.panel{ border-top:2px solid var(--line); }
+
+.patchlist{ list-style:none; padding:0; margin:.8rem 0; display:grid; gap:.9rem; }
+.patch{ background:var(--surface); border:2px solid var(--line); border-left:10px solid #000091; border-radius:14px; padding:.8rem 1rem; box-shadow:4px 4px 0 var(--bleu-soft); }
+.patch-h{ display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; margin-bottom:.3rem; }
+.patch-ic{ font-size:1.6rem; } .patch-v{ font-weight:700; font-size:1.2rem; color:var(--bleu-txt); }
+.patch-c{ font-size:1.08rem; margin:.3rem 0 .5rem; }
+.patch-q{ font-size:1rem; margin:.5rem 0 .2rem; }
+.patch-now{ background:var(--bleu-soft); border-radius:8px; padding:.45rem .7rem; margin:.6rem 0 0; }
+.big-patch{ border-left-color:#E1000F; margin:.8rem 0; }
+.paths{ display:flex; align-items:stretch; gap:.6rem; flex-wrap:wrap; margin:.8rem 0; }
+.path{ background:var(--surface); border:2px solid var(--line); border-radius:12px; padding:.7rem .9rem; display:flex; flex-direction:column; gap:.2rem; flex:1 1 200px; }
+.path.two{ flex-direction:row; gap:.6rem; flex:2 1 380px; } .path.two > div{ flex:1; display:flex; flex-direction:column; gap:.2rem; border-left:4px solid #E1000F; padding-left:.6rem; }
+.path-ic{ font-size:1.4rem; } .path-arrow{ align-self:center; font-size:1.8rem; font-weight:700; color:var(--muted); }
+@media (max-width:700px){ .path.two{ flex-direction:column; } .path-arrow{ transform:rotate(90deg); margin:0 auto; } }
+nav.frise ol{ grid-template-columns:repeat(4,1fr) !important; }
+.checkline{ display:flex; gap:.6rem; align-items:flex-start; padding:.45rem .2rem; border-bottom:1px solid var(--line); cursor:pointer; }
+.checkline input{ width:1.4rem; height:1.4rem; flex:none; margin-top:.15rem; }
+@media print{ header, nav.steps, .actions, .speak, #aa, footer, .noprint{ display:none !important; } body{ background:#fff; color:#000; } }
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Aller au contenu</a>
+<header>
+  <div class="tricolore" aria-hidden="true"><span class="b"></span><span class="w"></span><span class="r"></span></div>
+  <div id="profbar"></div>
+  <div class="bar">
+    <div class="brand"><span id="miniSeal" aria-hidden="true"></span><div><b>Les mises à jour de la Constitution</b><small>EMC 3e — Séance 4</small></div></div>
+    <div class="dossier"><span class="dossier-label" id="codeLbl">Phrase de la décision</span><div class="digits" id="digits" role="group" aria-labelledby="codeLbl"></div></div>
+    <button class="hbtn stop" id="stopread" type="button">⏹ Arrêter la lecture</button>
+    <button class="hbtn" id="openLex" type="button" aria-haspopup="dialog">📖 Lexique</button>
+  </div>
+</header>
+<nav class="steps" aria-label="Étapes de la séance"><ol id="steps"></ol></nav>
+<main id="main"></main>
+<footer><span>EMC 3e — La Constitution, socle des droits et des libertés.</span><button type="button" id="openProf">Espace professeur</button></footer>
+<div id="live" class="sr" aria-live="polite" role="status"></div>
+<div id="bulle" role="dialog" aria-labelledby="bulleT"><b id="bulleT" tabindex="-1"></b><span id="bulleD"></span>
+  <div class="brow"><button type="button" id="bulleEcoute">🔊 Écouter</button><button type="button" id="bulleFermer">Fermer</button></div></div>
+<button id="aa" type="button" aria-haspopup="dialog">Aa <span class="lib">Adapter l’affichage</span></button>
+
+<dialog id="lex" aria-labelledby="lexT">
+  <h2 id="lexT" style="margin-top:0">Lexique de la séance</h2>
+  <p>Ces mots sont aussi soulignés en pointillés dans les missions : touchez-les pour lire leur définition.</p>
+  <dl class="lex" id="lexList"></dl>
+  <div class="actions"><button class="btn" type="button" data-close="lex">Fermer le lexique</button></div>
+</dialog>
+
+<dialog id="settings" aria-labelledby="setT">
+  <h2 id="setT" style="margin-top:0">Adapter l’affichage</h2>
+  <p style="margin:.2rem 0 .6rem">Chaque élève choisit ce qui l’aide. Les réglages restent sur cet appareil.</p>
+  <fieldset><legend>Taille du texte</legend><div class="opt">
+    <label><input type="radio" name="size" value="m"> Normale</label><label><input type="radio" name="size" value="l"> Grande</label><label><input type="radio" name="size" value="xl"> Très grande</label></div></fieldset>
+  <fieldset><legend>Police</legend><div class="opt">
+    <label><input type="radio" name="font" value="atkinson"> Très lisible</label><label><input type="radio" name="font" value="lexend"> Lecture facilitée (dys)</label></div></fieldset>
+  <fieldset><legend>Espace entre les lignes</legend><div class="opt">
+    <label><input type="radio" name="spacing" value="normal"> Normal</label><label><input type="radio" name="spacing" value="wide"> Large</label></div></fieldset>
+  <fieldset><legend>Couleurs</legend><div class="opt">
+    <label><input type="radio" name="theme" value="auto"> Automatique</label><label><input type="radio" name="theme" value="light"> Clair</label><label><input type="radio" name="theme" value="dark"> Sombre</label>
+    <label><input type="checkbox" name="contrast"> Contraste élevé</label></div></fieldset>
+  <fieldset><legend>Lecture à voix haute</legend><div class="opt">
+    <label><input type="radio" name="rate" value="0.8"> Lente</label><label><input type="radio" name="rate" value="1"> Normale</label></div></fieldset>
+  <fieldset><legend>Confort</legend><div class="opt">
+    <label><input type="checkbox" name="timer"> Afficher le minuteur</label><label><input type="checkbox" name="motion"> Couper les animations</label></div></fieldset>
+  <div class="actions"><button class="btn" type="button" data-close="settings">Fermer</button></div>
+</dialog>
+
+<dialog id="profDlg" aria-labelledby="profT">
+  <h2 id="profT" style="margin-top:0">Espace professeur</h2>
+  <p>Le mode professeur affiche toutes les réponses, ouvre toutes les étapes (y compris la mission bonus) et donne accès au corrigé complet.</p>
+  <label for="profCode"><strong>Code professeur :</strong></label><br>
+  <input id="profCode" type="password" autocomplete="off" style="font-size:1.2rem;padding:.4rem;border:2px solid var(--line);border-radius:8px;background:var(--surface);margin-top:.3rem">
+  <p id="profMsg" role="status"></p>
+  <div class="actions"><button class="btn" type="button" id="profOk">Activer le mode professeur</button><button class="btn ghost" type="button" data-close="profDlg">Annuler</button></div>
+</dialog>
+
+<script>
+"use strict";
+const PROF_CODE = "SAGES";   // à modifier si besoin
+
+/* ================= GLOSSAIRE ================= */
+const GLOS = {
+  constitution:["Constitution","Le texte le plus important d’un pays. Il organise les pouvoirs et garantit les droits et libertés. Celle de la France date du 4 octobre 1958."],
+  revision:["Révision constitutionnelle","Modification de la Constitution. Depuis 1958, la Constitution a été révisée 25 fois."],
+  suffrage:["Suffrage universel direct","Élection où tous les citoyens majeurs votent eux-mêmes pour choisir un élu, sans intermédiaire."],
+  referendum:["Référendum","Vote par lequel les citoyens répondent directement par oui ou par non à une question ou à un texte."],
+  congres:["Congrès","Réunion des députés et des sénateurs à Versailles. Pour réviser la Constitution, il faut les trois cinquièmes des suffrages exprimés."],
+  conseil:["Conseil constitutionnel","Institution qui vérifie que les lois respectent la Constitution. Ses 9 membres sont nommés pour 9 ans."],
+  saisir:["Saisir","Demander officiellement à une institution d’examiner une question."],
+  parite:["Parité","Égalité du nombre de femmes et d’hommes, par exemple parmi les candidats à une élection."],
+  septennat:["Septennat","Mandat de 7 ans. C’était la durée du mandat du Président de la République de 1873 à 2002."],
+  quinquennat:["Quinquennat","Mandat de 5 ans. C’est la durée du mandat du Président de la République depuis 2002."],
+  cohabitation:["Cohabitation","Situation où le Président de la République et la majorité des députés sont de bords politiques opposés. Le Premier ministre vient alors du camp opposé au Président."],
+  decentralisation:["Décentralisation","Transfert de pouvoirs de l’État vers les collectivités territoriales : régions, départements, communes."],
+  collectivites:["Collectivités territoriales","Régions, départements et communes, administrés par des élus locaux."],
+  charte:["Charte de l’environnement","Texte de 2004, ajouté à la Constitution en 2005. Il protège le droit de vivre dans un environnement sain."],
+  qpc:["Question prioritaire de constitutionnalité (QPC)","Droit, créé en 2008, qui permet à une personne engagée dans un procès de contester une loi contraire à ses droits."],
+  suffrages:["Suffrages exprimés","Les votes « pour » et « contre ». Les abstentions ne comptent pas."],
+  troiscinq:["Trois cinquièmes","3 parts sur 5, soit 60 %. C’est plus que la simple majorité (plus de 50 %)."],
+  ivg:["IVG","Interruption volontaire de grossesse, autorisée en France depuis la loi Veil de 1975."],
+  loi:["Loi","Règle votée par le Parlement. Elle doit respecter la Constitution, et une autre loi peut la modifier."],
+  republique:["Forme républicaine","Le fait que la France soit une République, et non une monarchie. L’article 89 interdit de la réviser."],
+  attentat:["Attentat du Petit-Clamart","Tentative d’assassinat contre le général de Gaulle, le 22 août 1962, près de Paris."]
+};
+const g = (k, t) => `<button type="button" class="g" data-g="${k}" aria-expanded="false" aria-controls="bulle">${t}</button>`;
+
+/* ================= FONCTIONS ================= */
+const LEVELS = {
+  explo:{ name:"Nouveau membre", desc:"Je suis accompagné : deux choix par question, mots-clés repérés." },
+  enq:{ name:"Membre confirmé", desc:"Je travaille avec trois choix par question." },
+  exp:{ name:"Président de séance", desc:"Je trouve aussi qui a décidé chaque mise à jour, et j’ai des questions en plus." }
+};
+const COFFRES = {};
+
+/* ================= TON AVIS ================= */
+const VOTES = [
+  { id:"oui", label:"Oui : il faut pouvoir la modifier quand le pays change" },
+  { id:"non", label:"Non : il ne faut jamais toucher à la Constitution" },
+  { id:"neuve", label:"Il faudrait plutôt en écrire une toute nouvelle" }
+];
+
+/* ================= CHAPITRE 1 : LES MISES À JOUR ================= */
+const CTX = {
+  x62:"Après un attentat contre lui en août 1962, de Gaulle veut que son successeur tire sa force directement du peuple.",
+  x74:"En 1971, le Conseil constitutionnel commence à protéger les libertés. On veut que l’opposition puisse, elle aussi, lui demander de vérifier une loi.",
+  x99:"En 1997, il n’y a que 63 femmes sur 577 députés : 10,9 %.",
+  x00:"Le Président et la majorité des députés se retrouvent souvent de bords opposés : ce sont les cohabitations.",
+  x03:"On veut rapprocher les décisions des habitants, en donnant plus de pouvoirs aux régions, aux départements et aux communes.",
+  x05:"La pollution et le réchauffement climatique deviennent des enjeux majeurs.",
+  x08:"On veut rééquilibrer les pouvoirs : renforcer le Parlement et donner de nouveaux droits aux citoyens."
+};
+const UPDATES = [
+  { id:"u62", v:"1962", ic:"🗳️", change:"Le Président de la République est élu au " + g("suffrage","suffrage universel direct") + ".", ok:"x62", alt:["x00","x08"], who:"ref", now:"Tu pourras élire toi-même le Président de la République dès tes 18 ans.", hist:true },
+  { id:"u74", v:"1971-1974", ic:"🛡️", change:"60 députés ou 60 sénateurs peuvent " + g("saisir","saisir") + " le " + g("conseil","Conseil constitutionnel") + ".", ok:"x74", alt:["x08","x03"], who:"cong", now:"C’est ainsi que plus de 60 députés ont fait vérifier la loi sur les réseaux sociaux en 2026 (séance 2).", seen:"Séance 1 et séance 2" },
+  { id:"u99", v:"1999", ic:"⚖️", change:"« La loi favorise l’égal accès des femmes et des hommes aux mandats électoraux » : c’est la " + g("parite","parité") + ".", ok:"x99", alt:["x05","x00"], who:"cong", now:"En 2024, 208 femmes ont été élues députées, soit environ 36 %." },
+  { id:"u00", v:"2000", ic:"⏱️", change:"Le mandat du Président passe de 7 ans (" + g("septennat","septennat") + ") à 5 ans (" + g("quinquennat","quinquennat") + ").", ok:"x00", alt:["x62","x99"], who:"ref", now:"Depuis 2002, l’élection présidentielle a lieu tous les 5 ans, juste avant les élections des députés.", hist:true },
+  { id:"u03", v:"2003", ic:"🗺️", change:"Article 1er : « Son organisation est décentralisée. » Les régions entrent dans la Constitution.", ok:"x03", alt:["x74","x05"], who:"cong", now:"La région, qui gère ton futur lycée, est désormais protégée par la Constitution." },
+  { id:"u05", v:"2005", ic:"🌿", change:"La " + g("charte","Charte de l’environnement") + " entre dans la Constitution.", ok:"x05", alt:["x03","x99"], who:"cong", now:"Ton droit de vivre dans un environnement sain est protégé comme ta liberté d’expression.", seen:"Séance 1" },
+  { id:"u08", v:"2008", ic:"🔧", change:"Création de la " + g("qpc","QPC") + ". Le Parlement est renforcé. Le Président ne peut pas faire plus de deux mandats de suite.", ok:"x08", alt:["x74","x62"], who:"cong", now:"La QPC Parcoursup de la séance 3 a été possible grâce à cette mise à jour.", seen:"Séance 3" }
+];
+const WHO = [ { id:"ref", label:"Le peuple, par référendum" }, { id:"cong", label:"Les parlementaires, réunis en Congrès" } ];
+
+/* ================= CHAPITRE 2 : QUI PEUT METTRE À JOUR ? ================= */
+const C2MAJ = [ { id:"448", label:"448 voix" }, { id:"538", label:"538 voix" }, { id:"539", label:"539 voix" }, { id:"600", label:"600 voix" } ];
+const C2Q = [
+  { id:"q1", q:"La réforme de 2008 est-elle adoptée ?", ok:"oui",
+    opts:[{ id:"oui", label:"Oui, de justesse : avec une seule voix d’avance" }, { id:"large", label:"Oui, très largement" }, { id:"non", label:"Non, il manque des voix" }] },
+  { id:"q2", q:"Une révision pourrait-elle rétablir la monarchie en France ?", ok:"non",
+    opts:[{ id:"non", label:"Non : l’article 89 interdit de réviser la forme républicaine" }, { id:"oui", label:"Oui, si le Congrès est d’accord" }] },
+  { id:"q3", exp:true, q:"Pourquoi exiger les trois cinquièmes, et pas seulement plus de la moitié ?", ok:"large",
+    opts:[{ id:"large", label:"Pour que la Constitution ne change que si une large majorité est d’accord" }, { id:"vite", label:"Pour que la Constitution change plus vite" }, { id:"pres", label:"Pour que le Président décide seul" }] }
+];
+
+/* ================= CHAPITRE 3 : 2024 ================= */
+const C3Q = [
+  { id:"q1", q:"Pourquoi inscrire cette liberté dans la Constitution, alors qu’une loi l’autorisait déjà depuis 1975 ?", ok:"prot",
+    opts:[{ id:"prot", label:"Parce qu’une simple loi ne pourra plus la supprimer : il faudrait réviser la Constitution" }, { id:"facile", label:"Parce que la Constitution est plus facile à modifier qu’une loi" }, { id:"tous", label:"Parce que les lois ne s’appliquent pas à tout le monde" }] },
+  { id:"q2", exp:true, q:"Le 4 mars 2024, 780 parlementaires votent pour et 72 contre. Que montre ce vote ?", ok:"large",
+    opts:[{ id:"large", label:"Une très large majorité, bien au-delà des trois cinquièmes" }, { id:"juste", label:"Une adoption de justesse, comme en 2008" }, { id:"rejet", label:"Un rejet de la révision" }] }
+];
+const TILES = ["avec son temps","reste figée","La République","évolue","contre"];
+const PHRASE = "La République évolue avec son temps";
+const WORDS = [["La République","c1"],["évolue","c2"],["avec son temps","c3"]];
+const HINTS = {
+  c1:["Lisez bien chaque changement : quel problème vient-il résoudre ?", "Un mandat plus court ? Pensez aux cohabitations. Des femmes ? Pensez au nombre de députées en 1997."],
+  c2:["Calculez 3/5 de 896 : 896 × 3 ÷ 5 = 537,6. Il faut donc au moins…", "539 voix pour, alors qu’il en fallait 538 : combien de voix d’avance ?"],
+  c3:["Souvenez-vous de la pyramide des normes de la séance 1 : la Constitution est au-dessus des lois.", "Pour la phrase : la République ne reste pas figée."]
+};
+const CHAP = [["c1","1958 → 2008","Les mises à jour"],["c2","Article 89","Qui peut les faire ?"],["c3","2024","La dernière"],["eval","Évaluation","Ton paragraphe"]];
+const CRIT = [
+  { id:"k1", label:"J’utilise au moins trois mots du lexique (Constitution, hiérarchie des normes, bloc de constitutionnalité, Conseil constitutionnel, QPC, séparation des pouvoirs, révision…)." },
+  { id:"k2", label:"Je cite au moins deux exemples étudiés pendant la séquence." },
+  { id:"k3", label:"J’explique comment chaque exemple montre que la Constitution protège nos droits et nos libertés." },
+  { id:"k4", label:"J’organise ma réponse avec des connecteurs (d’abord, ensuite, de plus, enfin, donc…)." },
+  { id:"k5", label:"Je me suis relu(e) : phrases complètes, orthographe." }
+];
+const EXEMPLES = ["la hiérarchie des normes et le portable au collège (séance 1)", "la censure de la loi Hadopi en 2009 (séance 1)", "la censure de l’interdiction des réseaux sociaux en 2026 (séance 2)", "la QPC Parcoursup en 2020 (séance 3)", "la censure du Gouvernement en 2024 (séance 3)", "la Charte de l’environnement ajoutée en 2005 (séance 4)", "la liberté de recourir à l’IVG inscrite en 2024 (séance 4)"];
+
+/* ================= ILLUSTRATIONS (créations originales) ================= */
+const B = "#000091", R = "#E1000F", O = "#C8A24A", L = "#E3E3FD", W = "#FFFFFF", K = "#1B1B3A";
+const svgWrap = (label, inner, vb = "0 0 320 190") => `<svg class="illu" viewBox="${vb}" role="img" aria-label="${label}">${inner}</svg>`;
+const ILL = {
+  maj: () => svgWrap("Illustration : un smartphone qui installe la mise à jour « Constitution » avec une barre de progression", `
+    <ellipse cx="160" cy="178" rx="110" ry="8" fill="${L}"/>
+    <rect x="104" y="8" width="112" height="168" rx="16" fill="${K}"/><rect x="112" y="22" width="96" height="138" rx="6" fill="${W}"/>
+    <rect x="146" y="166" width="28" height="5" rx="2.5" fill="#55557A"/>
+    <rect x="124" y="34" width="72" height="44" rx="6" fill="${B}"/>
+    <rect x="132" y="42" width="18" height="28" fill="${B}" stroke="${W}" stroke-width="2"/><rect x="151" y="42" width="18" height="28" fill="${W}"/><rect x="170" y="42" width="18" height="28" fill="${R}"/>
+    <text x="160" y="96" text-anchor="middle" font-family="Atkinson Hyperlegible, Verdana, sans-serif" font-size="11" font-weight="700" fill="${K}">Constitution</text>
+    <text x="160" y="110" text-anchor="middle" font-family="Atkinson Hyperlegible, Verdana, sans-serif" font-size="9" fill="#55557A">25 mises à jour</text>
+    <rect x="124" y="118" width="72" height="9" rx="4.5" fill="${L}"/><rect x="124" y="118" width="72" height="9" rx="4.5" fill="${R}"/>
+    <text x="160" y="146" text-anchor="middle" font-family="Atkinson Hyperlegible, Verdana, sans-serif" font-size="9" fill="#55557A">depuis 1958</text>
+    <g transform="translate(250 62)"><circle r="28" fill="${O}"/><path d="M-12 -2 A13 13 0 1 1 -5 11" stroke="${K}" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M-20 -6 L-12 -2 L-8 -11" stroke="${K}" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g transform="translate(66 92)"><rect x="-26" y="-34" width="52" height="68" rx="4" fill="${W}" stroke="${K}" stroke-width="3"/><line x1="-16" y1="-20" x2="16" y2="-20" stroke="${K}" stroke-width="3"/><line x1="-16" y1="-8" x2="16" y2="-8" stroke="${K}" stroke-width="3"/><line x1="-16" y1="4" x2="10" y2="4" stroke="${K}" stroke-width="3"/><text y="26" text-anchor="middle" font-family="Atkinson Hyperlegible, Verdana, sans-serif" font-size="12" font-weight="700" fill="${R}">1958</text></g>`),
+  congres: () => svgWrap("Illustration : le Congrès réuni à Versailles, députés et sénateurs ensemble dans un grand hémicycle", `
+    <rect x="20" y="160" width="280" height="10" rx="5" fill="${L}"/>
+    ${(() => { let o = ""; [44,62,80,98,116].forEach((r,k) => { const n = Math.round(r/6); for (let i = 0; i <= n; i++) { const a = Math.PI*i/n; o += `<circle cx="${(160 - r*Math.cos(a)).toFixed(1)}" cy="${(160 - r*Math.sin(a)).toFixed(1)}" r="3.3" fill="${i < n*0.6 ? B : R}"/>`; } }); return o; })()}
+    <rect x="140" y="132" width="40" height="28" rx="3" fill="${O}"/>
+    <text x="160" y="186" text-anchor="middle" font-family="Atkinson Hyperlegible, Verdana, sans-serif" font-size="13" font-weight="700" fill="${K}">Congrès — Versailles</text>
+    <g transform="translate(270 34)"><rect x="-22" y="-10" width="44" height="30" rx="3" fill="${W}" stroke="${K}" stroke-width="2.5"/><text y="10" text-anchor="middle" font-family="Atkinson Hyperlegible, Verdana, sans-serif" font-size="14" font-weight="700" fill="${B}">3/5</text></g>`),
+  stamp: (txt, sub) => { const fs = Math.min(sub ? 28 : 32, Math.floor(236 / (txt.length * 0.68))); return `<svg class="stamp" viewBox="0 0 300 110" role="img" aria-label="Tampon : ${txt}${sub ? " " + sub : ""}"><g transform="rotate(-6 150 55)"><rect x="10" y="12" width="280" height="86" rx="8" fill="none" stroke="${R}" stroke-width="7"/><rect x="20" y="21" width="260" height="68" rx="4" fill="none" stroke="${R}" stroke-width="2.5"/>
+    <text x="150" y="${sub ? 56 : 64}" text-anchor="middle" font-family="Atkinson Hyperlegible, Verdana, sans-serif" font-size="${fs}" font-weight="700" letter-spacing="1.5" fill="${R}">${txt}</text>
+    ${sub ? `<text x="150" y="80" text-anchor="middle" font-family="Atkinson Hyperlegible, Verdana, sans-serif" font-size="16" font-weight="700" letter-spacing="2" fill="${R}">${sub}</text>` : ""}</g></svg>`; }
+};
+
+/* ================= SCEAU (création originale, pas le logo officiel) ================= */
+function seal(id, opts = {}){
+  const center = opts.center || "1958";
+  return `<svg class="seal" viewBox="0 0 200 200" role="img" aria-label="Sceau de la séance">
+  <defs><path id="${id}t" d="M100,100 m-72,0 a72,72 0 1,1 144,0"/><path id="${id}b" d="M100,100 m-80,0 a80,80 0 0,0 160,0"/></defs>
+  <circle cx="100" cy="100" r="97" fill="#C8A24A"/><circle cx="100" cy="100" r="90" fill="#000091"/>
+  <circle cx="100" cy="100" r="88" fill="none" stroke="#C8A24A" stroke-width="1.5" stroke-dasharray="2 3"/>
+  <text font-family="Atkinson Hyperlegible, Verdana, sans-serif" font-size="13.5" font-weight="700" fill="#FFFFFF" letter-spacing="1.5"><textPath href="#${id}t" startOffset="50%" text-anchor="middle">CONSEIL CONSTITUTIONNEL</textPath></text>
+  <text font-family="Atkinson Hyperlegible, Verdana, sans-serif" font-size="11" font-weight="700" fill="#C8A24A" letter-spacing="1.2"><textPath href="#${id}b" startOffset="50%" text-anchor="middle">RÉPUBLIQUE FRANÇAISE</textPath></text>
+  <circle cx="100" cy="100" r="52" fill="#FFFFFF"/>
+  <rect x="62" y="64" width="25" height="6" fill="#000091"/><rect x="87.5" y="64" width="25" height="6" fill="#FFFFFF" stroke="#BBB" stroke-width=".5"/><rect x="112.5" y="64" width="25" height="6" fill="#E1000F"/>
+  <g stroke="#000091" stroke-width="3" fill="none" stroke-linecap="round">
+    <line x1="100" y1="76" x2="100" y2="116"/><line x1="76" y1="82" x2="124" y2="82"/>
+    <line x1="76" y1="82" x2="69" y2="100"/><line x1="76" y1="82" x2="83" y2="100"/>
+    <line x1="124" y1="82" x2="117" y2="100"/><line x1="124" y1="82" x2="131" y2="100"/>
+    <path d="M67 100 Q76 108 85 100" fill="#000091"/><path d="M115 100 Q124 108 133 100" fill="#000091"/>
+    <line x1="90" y1="116" x2="110" y2="116"/></g>
+  <text x="100" y="138" text-anchor="middle" font-family="Atkinson Hyperlegible, Verdana, sans-serif" font-size="15" font-weight="700" fill="#E1000F">${center}</text>
+  </svg>`;
+}
+document.getElementById("miniSeal").innerHTML = seal("mini");
+
+
+/* ================= RÉGLAGES ================= */
+const DEF = { size:"m", font:"atkinson", spacing:"normal", theme:"auto", contrast:false, rate:"1", timer:true, motion:false };
+let SET = { ...DEF };
+try { const s = localStorage.getItem("m1958-settings"); if (s) SET = { ...DEF, ...JSON.parse(s) }; } catch(e) {}
+function applySettings(){
+  const r = document.documentElement;
+  r.dataset.size = SET.size; r.dataset.font = SET.font; r.dataset.spacing = SET.spacing;
+  if (SET.theme === "auto") delete r.dataset.theme; else r.dataset.theme = SET.theme;
+  if (SET.contrast) r.dataset.contrast = "high"; else delete r.dataset.contrast;
+  if (SET.motion) r.dataset.motion = "off"; else delete r.dataset.motion;
+  try { localStorage.setItem("m1958-settings", JSON.stringify(SET)); } catch(e) {}
+}
+function syncSettingsForm(){
+  const d = document.getElementById("settings");
+  ["size","font","spacing","theme","rate"].forEach(n => d.querySelectorAll(`input[name=${n}]`).forEach(i => i.checked = (i.value === String(SET[n]))));
+  ["contrast","timer","motion"].forEach(n => d.querySelector(`input[name=${n}]`).checked = SET[n]);
+}
+document.getElementById("settings").addEventListener("change", e => {
+  const i = e.target; SET[i.name] = i.type === "checkbox" ? i.checked : i.value;
+  applySettings(); if (i.name === "timer") render();
+});
+document.getElementById("aa").onclick = () => { syncSettingsForm(); document.getElementById("settings").showModal(); };
+document.querySelectorAll("[data-close]").forEach(b => b.onclick = () => document.getElementById(b.dataset.close).close());
+applySettings();
+
+/* Lexique */
+document.getElementById("lexList").innerHTML = Object.values(GLOS).sort((a,b) => a[0].localeCompare(b[0],"fr")).map(([t,d]) => `<dt>${t}</dt><dd>${d}</dd>`).join("");
+document.getElementById("openLex").onclick = () => document.getElementById("lex").showModal();
+
+/* ================= LECTURE VOCALE ================= */
+const stopBtn = document.getElementById("stopread");
+function strip(h){ const d = document.createElement("div"); d.innerHTML = h; return d.textContent.replace(/[«»]/g,""); }
+function speak(text){
+  if (!("speechSynthesis" in window)) { say("La lecture à voix haute n’est pas disponible sur cet appareil."); return; }
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(strip(text)); u.lang = "fr-FR"; u.rate = parseFloat(SET.rate);
+  const v = speechSynthesis.getVoices().find(v => v.lang && v.lang.startsWith("fr")); if (v) u.voice = v;
+  u.onend = u.onerror = () => stopBtn.classList.remove("show");
+  stopBtn.classList.add("show"); speechSynthesis.speak(u);
+}
+stopBtn.onclick = () => { if ("speechSynthesis" in window) speechSynthesis.cancel(); stopBtn.classList.remove("show"); };
+const SPEAK = {}; let speakId = 0;
+function speakBtn(text, label="Écouter"){ const id = "sp" + (speakId++); SPEAK[id] = text; return `<button type="button" class="speak" data-act="speak" data-id="${id}" data-fid="${id}">${label}</button>`; }
+
+/* ================= BULLE DE DÉFINITION ================= */
+const bulle = document.getElementById("bulle"); let bulleSrc = null;
+function closeBulle(back){ bulle.style.display = "none"; if (bulleSrc) { bulleSrc.setAttribute("aria-expanded","false"); if (back) bulleSrc.focus(); } bulleSrc = null; }
+function openBulle(b){
+  if (bulleSrc === b) { closeBulle(); return; }
+  closeBulle();
+  const d = GLOS[b.dataset.g]; if (!d) return;
+  document.getElementById("bulleT").textContent = d[0]; document.getElementById("bulleD").textContent = d[1];
+  bulle.style.display = "block";
+  const r = b.getBoundingClientRect();
+  const x = Math.min(scrollX + r.left, scrollX + document.documentElement.clientWidth - bulle.offsetWidth - 10);
+  bulle.style.left = Math.max(10, x) + "px"; bulle.style.top = (scrollY + r.bottom + 8) + "px";
+  bulleSrc = b; b.setAttribute("aria-expanded","true");
+  say(d[0] + " : " + d[1]);
+}
+document.getElementById("bulleFermer").onclick = () => closeBulle(true);
+document.getElementById("bulleEcoute").onclick = () => speak(document.getElementById("bulleT").textContent + ". " + document.getElementById("bulleD").textContent);
+
+/* ================= OUTILS ================= */
+function say(msg){ const l = document.getElementById("live"); l.textContent = ""; setTimeout(() => l.textContent = msg, 50); }
+const shapeSVG = c => {
+  const k = COFFRES[c];
+  const inner = k.shape === "circle" ? `<circle cx="10" cy="10" r="8" fill="${k.color}"/>`
+    : k.shape === "square" ? `<rect x="2.5" y="2.5" width="15" height="15" fill="${k.color}"/>`
+    : `<polygon points="10,1.5 18.5,18 1.5,18" fill="${k.color}"/>`;
+  return `<svg class="shape" viewBox="0 0 20 20" aria-hidden="true">${inner}</svg>`;
+};
+const coffreName = c => `${shapeSVG(c)}Coffre ${COFFRES[c].year}`;
+const lv = () => S.level || "enq";
+const isExplo = () => lv() === "explo", isExp = () => lv() === "exp";
+const labelOf = (arr, id) => (arr.find(x => x.id === id) || {}).label || "";
+
+/* ================= MINUTEUR ================= */
+const DUR = { c1:18, c2:8, c3:5 }; let tick = null;
+function startTimer(m){
+  if (S.timer.mission === m || S.prof) return;
+  S.timer = { mission:m, total:DUR[m]*60, left:DUR[m]*60, running:true };
+  clearInterval(tick);
+  tick = setInterval(() => { if (S.timer.running && S.timer.left > 0) { S.timer.left--; updateTimer(); } }, 1000);
+}
+function timerHTML(m){
+  if (!SET.timer || S[m].done || S.timer.mission !== m) return "";
+  return `<div class="timer" role="timer" aria-live="off"><span id="tleft"></span><div class="track" aria-hidden="true"><div class="fill" id="tfill"></div></div>
+    <button type="button" class="btn ghost small" data-act="pause" data-fid="pause">${S.timer.running ? "⏸ Pause" : "▶ Reprendre"}</button></div>`;
+}
+function updateTimer(){
+  const l = document.getElementById("tleft"), f = document.getElementById("tfill"); if (!l) return;
+  const t = S.timer, min = Math.floor(t.left/60), sec = String(t.left%60).padStart(2,"0");
+  l.textContent = t.left > 0 ? `Temps conseillé : ${min} min ${sec} s` : "Temps conseillé écoulé. Vous pouvez terminer tranquillement.";
+  f.style.width = (100 * t.left / t.total) + "%";
+}
+
+
+/* ================= ÉTAT ================= */
+function fresh(){
+  return {
+    avis:{ vote:"", vote2:"" },
+    c1:{ ctx:{}, who:{}, fails:0, hints:0, done:false, checked:false },
+    c2:{ maj:"", q:{}, fails:0, hints:0, done:false, checked:false },
+    c3:{ q:{}, phrase:[], fails:0, hints:0, done:false, checked:false },
+    eval:{ mode:"", text:"", crit:{}, audio:false, done:false },
+    timer:{ mission:null, total:0, left:0, running:false }
+  };
+}
+const S = Object.assign({ screen:"home", level:null, opened:false, prof:false }, fresh());
+let justPopped = [];
+
+/* ================= OUTILS ================= */
+
+const fbTag = v => v === true ? '<span class="fb good">juste</span>' : v === false ? '<span class="fb bad">à revoir</span>' : "";
+const ans = t => S.prof ? `<span class="answer">${t}</span>` : "";
+function choiceRow(labelId, arr, cur, act, extra, done){
+  return `<div class="choices" role="group" aria-labelledby="${labelId}">${arr.map(v =>
+    `<button type="button" class="choice" data-act="${act}" ${extra} data-v="${v.id}" data-fid="${act}-${labelId}-${v.id}" aria-pressed="${cur === v.id}" ${done ? 'aria-disabled="true"' : ""}>${v.label}</button>`).join("")}</div>`;
+}
+function qBlock(m, list, store){
+  const st = S[m];
+  return list.filter(q => !q.exp || isExp() || S.prof).map(q => `<section class="panel q"><h3 id="${m}-${q.id}" style="margin-top:0">${q.exp ? "<span class='badge reel'>Président de séance</span> " : ""}${q.q}</h3>
+    ${choiceRow(m + "-" + q.id, q.opts, store === "_x" ? st.x : st[store][q.id], "pick", `data-m="${m}" data-s="${store}" data-q="${q.id}"`, st.done)}
+    ${fbTag((() => { const c = store === "_x" ? st.x : st[store][q.id]; return st.checked && c ? c === q.ok : null; })())}${S.prof && !st.done ? ans(labelOf(q.opts, q.ok)) : ""}</section>`).join("");
+}
+function colShape(k){
+  const c = COLS[k];
+  const inner = c.shape === "circle" ? `<circle cx="10" cy="10" r="8" fill="${c.color}"/>` : c.shape === "square" ? `<rect x="2.5" y="2.5" width="15" height="15" fill="${c.color}"/>`
+    : c.shape === "triangle" ? `<polygon points="10,1.5 18.5,18 1.5,18" fill="${c.color}"/>` : `<polygon points="10,1 19,10 10,19 1,10" fill="${c.color}"/>`;
+  return `<svg class="shape" viewBox="0 0 20 20" aria-hidden="true">${inner}</svg>`;
+}
+function chapbar(active){
+  return `<nav class="frise" aria-label="Les chapitres de l’histoire"><ol>${CHAP.map(([id,y,l]) =>
+    `<li class="${id === active ? "on" : ""} ${S[id] && S[id].done ? "fait" : ""}" ${id === active ? 'aria-current="step"' : ""}><span class="y">${S[id] && S[id].done ? "✓ " : ""}${y}</span><span class="l">${l}</span></li>`).join("")}</ol></nav>`;
+}
+function scene(ill, html){ return `<div class="scene"><div class="scene-ill">${ill}</div><div class="scene-txt">${html}</div></div>`; }
+function checkBar(m){
+  return S[m].done ? "" : `<div class="actions"><button type="button" class="btn" data-act="check" data-m="${m}" data-fid="check-${m}">Vérifier</button></div>${retryBlock(m)}`;
+}
+function hintsBlock(m, list){
+  const n = S.prof ? list.length : S[m].hints;
+  return `<details class="panel hints"><summary><strong>Besoin d’un indice ?</strong> (${n} sur ${list.length})</summary>
+    ${list.slice(0,n).map((h,i) => `<p><strong>Indice ${i+1} :</strong> ${h} ${speakBtn(h)}</p>`).join("")}
+    ${n < list.length && !S[m].done ? `<button type="button" class="btn ghost small" data-act="hint" data-m="${m}" data-fid="hint-${m}">Voir un indice</button>` : ""}</details>`;
+}
+function successBlock(m, word, next, label){
+  return `<div class="success" tabindex="-1" id="succ-${m}"><p><strong>Chapitre réussi !</strong> Vous gagnez le morceau de phrase <strong class="code">${word}</strong>, en haut de l’écran.</p>
+    <div class="actions"><button type="button" class="btn" data-act="go" data-to="${next}" data-fid="next-${m}">${label}</button></div></div>`;
+}
+function retryBlock(m){
+  if (S[m].done || !S[m].checked) return "";
+  return `<p class="panel">Corrigez les réponses marquées ✗ puis vérifiez à nouveau.
+    ${S[m].fails >= 2 ? `<br>Vous bloquez ? <button type="button" class="btn ghost small" data-act="solution" data-m="${m}" data-fid="sol-${m}">Afficher la correction</button>` : ""}</p>`;
+}
+function profFill(m){ return S.prof && !S[m].done ? `<div class="profbox"><button type="button" class="btn rouge small" data-act="solution" data-m="${m}" data-fid="fill-${m}">Remplir avec la correction (projection)</button></div>` : ""; }
+function mhead(n, title){ return `<div class="mhead"><span class="num" aria-hidden="true">${n}</span><h1 tabindex="-1">${title}</h1></div>`; }
+
+
+function ctxOptions(u){
+  const ids = isExplo() ? [u.ok, u.alt[0]] : [u.ok, ...u.alt];
+  const order = ids.map((id, i) => ({ id, k:(id.charCodeAt(1) * 7 + u.v.length * 3 + i * 11) % 17 })).sort((a,b) => a.k - b.k).map(x => x.id);
+  return order.map(id => ({ id, label:CTX[id] }));
+}
+const wordCount = t => (t.trim().match(/[A-Za-zÀ-ÿœŒ0-9’'-]+/g) || []).length;
+
+/* ================= EN-TÊTE ================= */
+const STEPS = [["home","Accueil"],["avis","Ton avis"],["c1","1. Les mises à jour"],["c2","2. Qui peut les faire ?"],["c3","3. La dernière"],["eval","Évaluation"],["bilan","Bilan"]];
+function renderHeader(){
+  document.getElementById("digits").innerHTML = WORDS.map(([w,m]) => {
+    const on = S[m].done;
+    return `<span class="wtile ${on ? "on" : ""} ${on && justPopped.includes(m) ? "pop" : ""}" aria-label="${on ? w : "morceau manquant"}">${on ? w : "?"}</span>`;
+  }).join("");
+  justPopped = [];
+  const steps = S.prof ? [...STEPS, ["corrige","Corrigé complet"]] : STEPS;
+  document.getElementById("steps").innerHTML = steps.map(([id,l]) => {
+    const done = S[id] && S[id].done;
+    const lock = !S.prof && ((id !== "home" && !S.opened) || (id !== "home" && id !== "avis" && !S.avis.vote) || ((id === "eval" || id === "bilan") && !S.c3.done));
+    return `<li><button type="button" data-act="go" data-to="${id}" data-fid="step-${id}" ${S.screen === id ? 'aria-current="step"' : ""} ${lock ? "disabled" : ""}>${l}${done ? ' <span class="mark">✓<span class="sr"> terminé</span></span>' : ""}</button></li>`;
+  }).join("");
+  document.getElementById("profbar").innerHTML = S.prof ? `<div class="profbar">Mode professeur actif : les réponses sont affichées <button type="button" data-act="profoff" data-fid="profoff">Quitter le mode professeur</button></div>` : "";
+}
+
+/* ================= ÉCRANS ================= */
+const VIEWS = {
+home(){
+  const intro = "Les mises à jour de la Constitution. Ton téléphone se met à jour sans arrêt. La Constitution de 1958, elle aussi, a reçu 25 mises à jour. Aujourd’hui, vous allez découvrir les plus importantes : pourquoi elles ont eu lieu, ce qu’elles ont changé, et qui a le droit de les faire. La séance se termine par l’évaluation de toute la séquence.";
+  return `<section class="hero"><div class="hero-ill">${ILL.maj()}</div><div>
+    <h1 tabindex="-1">Les mises à jour de la Constitution</h1>
+    <p class="lieu">EMC 3e — Séance 4</p></div></section>
+  <section class="panel consigne"><p>Ton téléphone se met à jour sans arrêt. La ${g("constitution","Constitution")} de 1958, elle aussi, a reçu <strong>25 mises à jour</strong>.</p>
+    <p>Vous allez découvrir les plus importantes : <strong>pourquoi</strong> elles ont eu lieu, <strong>ce qu’elles ont changé</strong>, et <strong>qui a le droit</strong> de les faire. La séance se termine par l’<strong>évaluation</strong> de toute la séquence.</p>${speakBtn(intro,"Écouter")}</section>
+  <section class="panel"><h2 style="margin-top:0">La séance en 3 chapitres et une évaluation</h2>${chapbar("")}
+    <p>Chaque chapitre réussi vous donne un morceau d’une phrase, en haut de l’écran. Dans votre binôme, un <strong>lecteur</strong> et un <strong>rapporteur</strong> échangent leurs rôles à chaque chapitre. <strong>L’évaluation se fait seul.</strong></p></section>
+  <h2 id="lvTitle">Choisissez votre fonction</h2>
+  <div class="levels" role="group" aria-labelledby="lvTitle">
+    ${Object.entries(LEVELS).map(([k,v]) => `<button type="button" class="level" data-act="level" data-lv="${k}" data-fid="lv-${k}" aria-pressed="${S.level === k}"><span class="lv-name">${v.name}</span>${v.desc}</button>`).join("")}
+  </div>
+  <div class="actions"><button type="button" class="btn rouge" data-act="open" data-fid="open" ${S.level ? "" : "disabled"}>Commencer</button>${S.level ? "" : "<span>Choisissez d’abord votre fonction.</span>"}</div>
+  <p style="margin-top:1rem">Les mots soulignés en pointillés ont une définition : touchez-les. Le bouton <strong>Aa</strong>, en bas à droite, adapte l’affichage et la lecture.</p>
+  <p>Ton travail est enregistré automatiquement sur cet appareil. Pour le <strong>rendre</strong>, le <strong>reprendre</strong> ailleurs ou <strong>recommencer</strong> : bouton <strong>📁 Mon travail</strong>, en haut.</p>`;
+},
+
+avis(){
+  const a = S.avis;
+  return `${mhead("?", "Et toi, qu’en penses-tu ?")}
+  ${scene(ILL.maj(), `<p class="big">La Constitution a été écrite en <strong>1958</strong>. Ni tes parents ni Internet n’existaient sous leur forme actuelle.</p>
+    <p class="big"><strong>Peut-elle encore convenir à notre époque ?</strong></p>${speakBtn("La Constitution a été écrite en 1958. Peut-elle encore convenir à notre époque ?")}`)}
+  <section class="panel"><h2 id="vq" style="margin-top:0">Ton avis</h2>${choiceRow("vq", VOTES, a.vote, "vote", "", false)}</section>
+  ${a.vote ? `<section class="teaser"><p><strong>Le savais-tu ?</strong> Depuis 1958, la Constitution a été <strong>révisée 25 fois</strong>. Elle a changé la façon d’élire le Président, la durée de son mandat, la place des femmes en politique…</p>
+    <p class="big">Pourquoi ? Et qui a le droit de la changer ?</p></section>
+    <div class="actions"><button type="button" class="btn" data-act="go" data-to="c1" data-fid="toc1">Chapitre 1 : les mises à jour</button></div>` : ""}`;
+},
+
+c1(){
+  startTimer("c1");
+  const m = S.c1;
+  return `${mhead(1, "Les notes de mise à jour")}${chapbar("c1")}${timerHTML("c1")}
+  <section class="panel consigne"><p>Voici les grandes mises à jour de la Constitution, comme les notes de version de ton téléphone.</p>
+    <p><strong>Pour chaque mise à jour, trouvez pourquoi elle a eu lieu.</strong>${isExp() ? " Puis indiquez <strong>qui l’a décidée</strong> : le peuple par " + g("referendum","référendum") + ", ou les parlementaires réunis en " + g("congres","Congrès") + "." : ""}</p>
+    ${speakBtn("Voici les grandes mises à jour de la Constitution, comme les notes de version de ton téléphone. Pour chaque mise à jour, trouvez pourquoi elle a eu lieu." + (isExp() ? " Puis indiquez qui l’a décidée : le peuple par référendum, ou les parlementaires réunis en Congrès." : ""), "Écouter la consigne")}</section>
+  <p class="mots"><strong>Mots utiles :</strong> ${g("revision","révision")} ${g("cohabitation","cohabitation")} ${g("decentralisation","décentralisation")} ${g("collectivites","collectivités territoriales")} ${g("attentat","attentat du Petit-Clamart")}</p>
+  ${profFill("c1")}
+  <ol class="patchlist">${UPDATES.map(u => {
+    const okC = m.checked && m.ctx[u.id] ? m.ctx[u.id] === u.ok : null, okW = m.checked && m.who[u.id] ? m.who[u.id] === u.who : null;
+    const solved = m.done || S.prof || (m.checked && okC && (!isExp() || okW));
+    return `<li class="patch"><div class="patch-h"><span class="patch-ic" aria-hidden="true">${u.ic}</span><span class="patch-v">Mise à jour ${u.v}</span>${u.seen ? `<span class="badge reel">Déjà vu : ${u.seen}</span>` : ""}${u.hist ? `<span class="badge fictif">Lien avec l’histoire</span>` : ""}</div>
+      <p class="patch-c"><strong>Ce qui change :</strong> ${u.change}</p>
+      <h3 id="ctx-${u.id}" class="patch-q">Pourquoi cette mise à jour ?</h3>
+      ${choiceRow("ctx-" + u.id, ctxOptions(u), m.ctx[u.id], "ctx", `data-u="${u.id}"`, m.done)}${fbTag(okC)}${S.prof && !m.done ? ans(CTX[u.ok]) : ""}
+      ${isExp() || S.prof ? `<h3 id="who-${u.id}" class="patch-q">Qui l’a décidée ?</h3>${choiceRow("who-" + u.id, WHO, m.who[u.id], "who", `data-u="${u.id}"`, m.done)}${fbTag(okW)}${S.prof && !m.done ? ans(labelOf(WHO, u.who)) : ""}` : ""}
+      ${solved ? `<p class="patch-now">📱 <strong>Et pour toi ?</strong> ${u.now}</p>` : ""}</li>`;
+  }).join("")}</ol>
+  ${m.done ? `<p class="retenir"><strong>À retenir :</strong> la Constitution évolue pour s’adapter aux changements de la société : l’élection du Président, la durée de son mandat, la place des femmes, le rôle des régions, l’environnement, les droits des citoyens.</p>` + successBlock("c1", "« La République »", "c2", "Chapitre 2 : qui peut les faire ?") : checkBar("c1")}
+  ${hintsBlock("c1", HINTS.c1)}`;
+},
+
+c2(){
+  startTimer("c2");
+  const m = S.c2;
+  const a89 = isExplo()
+    ? "Pour modifier la Constitution, l’<span class='kw'>Assemblée nationale</span> et le <span class='kw'>Sénat</span> doivent d’abord voter le <span class='kw'>même texte</span>. Ensuite, il faut l’accord du <span class='kw'>peuple</span> par référendum, ou des <span class='kw'>trois cinquièmes</span> des parlementaires réunis en Congrès. On ne peut pas supprimer la République."
+    : "L’initiative appartient au Président de la République, sur proposition du Premier ministre, et aux parlementaires. Le texte doit être voté dans les mêmes termes par les deux assemblées. La révision est définitive après avoir été approuvée par référendum. Elle n’est pas soumise au référendum si le Président décide de la soumettre au Parlement réuni en Congrès : il faut alors la majorité des trois cinquièmes des suffrages exprimés. « La forme républicaine du Gouvernement ne peut faire l’objet d’une révision. »";
+  const okM = m.checked && m.maj ? m.maj === "538" : null;
+  return `${mhead(2, "Qui peut mettre à jour la Constitution ?")}${chapbar("c2")}${timerHTML("c2")}
+  ${scene(ILL.congres(), `<p>On ne modifie pas la Constitution comme une simple loi. L’<strong>article 89</strong> prévoit une procédure exigeante.</p>
+    <p>Après un vote identique de l’Assemblée nationale et du Sénat, il faut l’accord du <strong>peuple</strong> par ${g("referendum","référendum")} (comme en 2000), ou des <strong>${g("troiscinq","trois cinquièmes")}</strong> des parlementaires réunis en ${g("congres","Congrès")} à Versailles (comme en 2008).</p>
+    ${speakBtn("On ne modifie pas la Constitution comme une simple loi. L’article 89 prévoit une procédure exigeante. Après un vote identique de l’Assemblée nationale et du Sénat, il faut l’accord du peuple par référendum, comme en 2000, ou des trois cinquièmes des parlementaires réunis en Congrès à Versailles, comme en 2008.")}`)}
+  <section class="panel doc"><span class="tag">Constitution, article 89 (${isExplo() ? "résumé" : "résumé fidèle"})</span><p>${a89}</p>${speakBtn(strip(a89))}</section>
+  <div class="paths"><div class="path"><span class="path-ic" aria-hidden="true">🏛️ + 🏛️</span><strong>1. Vote du même texte</strong><span>Assemblée nationale et Sénat</span></div>
+    <div class="path-arrow" aria-hidden="true">→</div>
+    <div class="path two"><div><span class="path-ic" aria-hidden="true">🗳️</span><strong>2a. Référendum</strong><span>Le peuple vote oui ou non (2000)</span></div><div><span class="path-ic" aria-hidden="true">🏰</span><strong>2b. Congrès à Versailles</strong><span>3/5 des suffrages exprimés (2008, 2024)</span></div></div></div>
+  ${profFill("c2")}
+  <section class="archive"><span class="tag">Congrès de Versailles — 21 juillet 2008</span>
+    <p>La grande réforme de 2008 est soumise au Congrès. Résultat : <strong>539 voix pour</strong> et <strong>357 voix contre</strong>, soit <strong>896</strong> ${g("suffrages","suffrages exprimés")}.</p>
+    ${speakBtn("Le 21 juillet 2008, la grande réforme est soumise au Congrès. Résultat : 539 voix pour et 357 voix contre, soit 896 suffrages exprimés.")}</section>
+  ${isExplo() ? `<section class="panel"><p><strong>Aide :</strong> les trois cinquièmes de 896, c’est 537,6. Il fallait donc <strong>au moins 538 voix</strong>.</p></section>`
+   : `<section class="panel q"><h3 id="mq" style="margin-top:0">Combien de voix fallait-il au minimum ? (les trois cinquièmes de 896)</h3>${choiceRow("mq", C2MAJ, m.maj, "c2maj", "", m.done)}${fbTag(okM)}${ans("538 voix (896 × 3 ÷ 5 = 537,6)")}</section>`}
+  ${qBlock("c2", C2Q, "q")}
+  ${m.done || S.prof ? `<section class="verdict">${ILL.stamp("ADOPTÉE", "À UNE VOIX PRÈS")}<div><p class="big"><strong>539 voix, pour 538 nécessaires.</strong></p>
+    <p>La réforme de 2008, l’une des plus importantes depuis 1958, a été adoptée avec <strong>une seule voix d’avance</strong>. Chaque vote compte !</p></div></section>` : ""}
+  ${m.done ? successBlock("c2", "« évolue »", "c3", "Chapitre 3 : la dernière mise à jour") : checkBar("c2")}
+  ${hintsBlock("c2", HINTS.c2)}`;
+},
+
+c3(){
+  startTimer("c3");
+  const m = S.c3;
+  const all = S.c1.done && S.c2.done;
+  const built = m.phrase.map(i => TILES[i]).join(" ");
+  const txt = "Le 4 mars 2024, le Congrès, réuni à Versailles, adopte une révision de la Constitution par 780 voix contre 72. L’article 34 précise désormais que la loi détermine les conditions dans lesquelles s’exerce la liberté garantie à la femme d’avoir recours à une interruption volontaire de grossesse. C’est la 25e révision de la Constitution depuis 1958.";
+  return `${mhead(3, "La dernière mise à jour : 2024")}${chapbar("c3")}${timerHTML("c3")}
+  ${neutre("Ce sujet peut toucher des convictions personnelles. On étudie ici un mécanisme : pourquoi inscrire une liberté dans la Constitution. Chacun garde ses opinions, et on les respecte.")}
+  <section class="patch big-patch"><div class="patch-h"><span class="patch-ic" aria-hidden="true">📜</span><span class="patch-v">Mise à jour 2024</span><span class="badge reel">25e révision</span></div>
+    <p>Le <strong>4 mars 2024</strong>, le Congrès, réuni à Versailles, adopte une révision de la Constitution par <strong>780 voix contre 72</strong>.</p>
+    <p><strong>Ce qui change :</strong> l’article 34 précise désormais que « la loi détermine les conditions dans lesquelles s’exerce la <strong>liberté garantie</strong> à la femme d’avoir recours à une interruption volontaire de grossesse » (${g("ivg","IVG")}).</p>
+    ${speakBtn(txt)}</section>
+  <p class="mots"><strong>Mot utile :</strong> ${g("loi","loi")}</p>
+  ${profFill("c3")}
+  ${qBlock("c3", C3Q, "q")}
+  <section class="panel"><h2 style="margin-top:0">La phrase de la séance</h2>
+    <p>Reconstituez la phrase avec les morceaux gagnés : deux mots sont des pièges.</p>
+    <div class="phrase" aria-live="polite"><span class="sr">Votre phrase : </span>${built || "<em>Votre phrase apparaîtra ici.</em>"}</div>
+    <div class="choices" role="group" aria-label="Mots disponibles">${TILES.map((t,i) => m.phrase.includes(i) ? "" : `<button type="button" class="choice tile" data-act="tile" data-i="${i}" data-fid="tile-${i}" ${all && !m.done ? "" : 'aria-disabled="true"'}>${t}</button>`).join("")}</div>
+    ${all ? "" : `<p><strong>Terminez d’abord les chapitres 1 et 2</strong> pour gagner les premiers morceaux. Le dernier morceau, « avec son temps », est déjà disponible.</p>`}
+    ${m.done ? "" : `<div class="actions"><button type="button" class="btn ghost small" data-act="tileback" data-fid="tileback">Retirer le dernier mot</button></div>`}
+    ${m.checked && built !== PHRASE ? '<p class="fb bad">La phrase n’est pas encore juste.</p>' : ""}${S.prof && !m.done ? ans(PHRASE) : ""}</section>
+  ${m.done ? `<section class="verdict">${ILL.stamp("ÉVOLUE", "AVEC SON TEMPS")}<div><p class="big"><strong>« La République évolue avec son temps. »</strong></p>
+    <p>La Constitution n’est pas figée. Elle change, selon une procédure exigeante, pour s’adapter à la société et mieux protéger nos droits.</p></div></section>
+    <div class="actions"><button type="button" class="btn rouge" data-act="go" data-to="eval" data-fid="toeval">Passer à l’évaluation</button></div>`
+   : `<div class="actions"><button type="button" class="btn" data-act="check" data-m="c3" data-fid="check-c3" ${all ? "" : "disabled"}>Vérifier</button></div>${retryBlock("c3")}`}
+  ${hintsBlock("c3", HINTS.c3)}`;
+},
+
+eval(){
+  const e = S.eval;
+  const n = wordCount(e.text);
+  const sujet = "Comment la Constitution protège-t-elle nos droits et nos libertés ? Répondez en vous appuyant sur au moins deux exemples étudiés pendant la séquence.";
+  return `${mhead("✎", "Évaluation : comment la Constitution protège-t-elle nos droits ?")}${chapbar("eval")}
+  <section class="panel consigne"><h2 style="margin-top:0">Le sujet</h2><p class="big"><strong>${sujet}</strong></p>${speakBtn(sujet,"Écouter le sujet")}
+    <p>Travail <strong>individuel</strong>, environ 15 minutes. Choisissez votre forme de réponse.</p></section>
+  <div class="choices" role="group" aria-label="Forme de la réponse">
+    <button type="button" class="choice" data-act="evmode" data-v="ecrit" data-fid="ev-ecrit" aria-pressed="${e.mode === "ecrit"}">✍️ Un paragraphe écrit (10 à 15 lignes)</button>
+    <button type="button" class="choice" data-act="evmode" data-v="audio" data-fid="ev-audio" aria-pressed="${e.mode === "audio"}">🎙️ Une capsule audio (2 minutes maximum)</button>
+  </div>
+  <details class="panel" ${isExplo() ? "open" : ""}><summary><strong>Une aide pour construire ma réponse</strong></summary>
+    <p><strong>Un plan possible :</strong> 1. La Constitution est au sommet de toutes les règles. 2. Des institutions vérifient qu’elle est respectée et se surveillent entre elles. 3. Elle évolue pour mieux protéger nos droits.</p>
+    <p><strong>Des exemples à réutiliser :</strong></p><ul>${EXEMPLES.map(x => `<li>${x}</li>`).join("")}</ul>
+    <p><strong>Des débuts de phrase :</strong> « La Constitution est… » ; « Par exemple, en 2026… » ; « Cela montre que… » ; « De plus… » ; « Enfin… ».</p></details>
+  ${e.mode === "ecrit" ? `<section class="panel"><label for="evtext"><strong>Mon paragraphe</strong></label>
+    <textarea id="evtext" data-act="evtext" data-fid="evtext" style="min-height:16rem">${e.text}</textarea>
+    <p class="petit" id="wc" aria-live="polite">${n} mot${n > 1 ? "s" : ""}. Un bon paragraphe compte souvent entre 120 et 200 mots.</p>
+    <p class="petit">Vous pouvez aussi dicter votre texte avec l’outil de dictée de votre tablette ou de votre ordinateur.</p></section>` : ""}
+  ${e.mode === "audio" ? `<section class="panel"><p>Enregistrez votre capsule avec l’outil d’enregistrement du devoir Éléa, puis déposez-la. Préparez d’abord quelques mots-clés au brouillon.</p>
+    <label class="checkline"><input type="checkbox" data-act="evaudio" ${e.audio ? "checked" : ""}> J’ai enregistré et déposé ma capsule audio sur Éléa.</label></section>` : ""}
+  ${e.mode ? `<section class="panel"><h2 style="margin-top:0">Je vérifie mon travail</h2><p>Cochez ce que vous avez fait. C’est la grille que votre professeur utilisera.</p>
+    ${CRIT.map(c => `<label class="checkline"><input type="checkbox" data-act="evcrit" data-c="${c.id}" ${e.crit[c.id] ? "checked" : ""}> ${c.label}</label>`).join("")}</section>
+    <div class="actions"><button type="button" class="btn rouge" data-act="evdone" data-fid="evdone">J’ai terminé mon évaluation</button><button type="button" class="btn ghost" data-act="openwork" data-fid="openwork2">📁 Rendre mon travail</button></div>
+    ${e.done ? `<p class="retenir">C’est noté. Pensez à <strong>rendre votre travail</strong> avec le bouton « 📁 Mon travail » : votre paragraphe sera dans le document Word ou PDF. Ensuite, passez au bilan.</p><div class="actions"><button type="button" class="btn" data-act="go" data-to="bilan" data-fid="tobilan">Voir le bilan</button></div>` : ""}` : ""}`;
+},
+
+bilan(){
+  const a = S.avis;
+  const lec = "La Constitution n’est pas figée : depuis 1958, elle a été révisée 25 fois pour s’adapter à la société. L’article 89 prévoit une procédure exigeante : un vote identique de l’Assemblée nationale et du Sénat, puis un référendum ou la majorité des trois cinquièmes des parlementaires réunis en Congrès. La forme républicaine ne peut pas être modifiée. Les révisions ont changé l’organisation des pouvoirs : élection du Président au suffrage universel direct en 1962, saisine du Conseil constitutionnel par 60 parlementaires en 1974, parité en 1999, quinquennat en 2000, décentralisation en 2003, Charte de l’environnement en 2005, QPC et renforcement du Parlement en 2008. En 2024, la liberté de recourir à l’IVG a été inscrite dans la Constitution : une simple loi ne peut plus la supprimer.";
+  return `${mhead("✓", "Bilan : une Constitution vivante")}
+  <section class="panel trace"><h2 style="margin-top:0">La leçon</h2>
+    <p>La Constitution n’est pas figée : depuis 1958, elle a été <strong>révisée 25 fois</strong> pour s’adapter à la société.</p>
+    <p>L’<strong>article 89</strong> prévoit une procédure exigeante : un vote identique de l’Assemblée nationale et du Sénat, puis un <strong>référendum</strong> ou la majorité des <strong>trois cinquièmes</strong> des parlementaires réunis en <strong>Congrès</strong>. La forme républicaine ne peut pas être modifiée.</p>
+    <p>Les révisions ont changé l’organisation des pouvoirs : élection du Président au <strong>suffrage universel direct</strong> (1962), saisine du Conseil constitutionnel par 60 parlementaires (1974), <strong>parité</strong> (1999), <strong>quinquennat</strong> (2000), <strong>décentralisation</strong> (2003), <strong>Charte de l’environnement</strong> (2005), <strong>QPC</strong> et renforcement du Parlement (2008). En 2024, la liberté de recourir à l’IVG a été inscrite dans la Constitution : une simple loi ne peut plus la supprimer.</p>
+    ${speakBtn(lec,"Écouter la leçon")}</section>
+  <section class="panel"><h2 style="margin-top:0">La séquence en un coup d’œil</h2><div class="tbl"><table class="corr">
+    <tr><th>Séance</th><th>Ce que j’ai appris</th></tr>
+    <tr><td>1. Mission 1958</td><td>La Constitution est au sommet des règles et forme, avec la DDHC, le Préambule de 1946 et la Charte de l’environnement, le bloc de constitutionnalité.</td></tr>
+    <tr><td>2. Réseaux sociaux : qui décide ?</td><td>Une loi passe par plusieurs institutions ; le Conseil constitutionnel peut en censurer une partie. Le pouvoir arrête le pouvoir.</td></tr>
+    <tr><td>3. Qui surveille le pouvoir ?</td><td>Grâce à la QPC, un citoyen peut contester une loi ; le Parlement contrôle le Gouvernement. Tout pouvoir doit rendre des comptes.</td></tr>
+    <tr><td>4. Les mises à jour</td><td>La Constitution évolue selon une procédure exigeante. La République évolue avec son temps.</td></tr></table></div></section>
+  <section class="panel"><h2 id="v2q" style="margin-top:0">Et maintenant, ton avis ?</h2>
+    <p>Au début, tu as répondu : <strong>${labelOf(VOTES, a.vote) || "—"}</strong>. La Constitution de 1958 peut-elle encore convenir à notre époque ?</p>
+    ${choiceRow("v2q", VOTES, a.vote2, "vote2", "", false)}</section>
+  <div class="actions noprint"><button type="button" class="btn rouge" data-act="openwork" data-fid="openwork">📁 Rendre mon travail</button><button type="button" class="btn" data-act="print" data-fid="print">Imprimer la leçon</button></div>`;
+},
+
+corrige(){
+  const row = (a,b) => `<tr><td>${a}</td><td>${b}</td></tr>`;
+  const qs = list => list.map(q => row(q.q + (q.exp ? " <em>(président de séance)</em>" : ""), labelOf(q.opts, q.ok))).join("");
+  return `${mhead("P","Corrigé complet (professeur)")}
+  <section class="panel"><h2 style="margin-top:0">Chapitre 1 — Les mises à jour (« La République »)</h2><div class="tbl"><table class="corr"><tr><th>Mise à jour</th><th>Pourquoi</th><th>Qui a décidé (président de séance)</th></tr>
+    ${UPDATES.map(u => `<tr><td>${u.v} : ${strip(u.change)}</td><td>${CTX[u.ok]}</td><td>${labelOf(WHO, u.who)}</td></tr>`).join("")}</table></div>
+    <p><strong>Pour le professeur :</strong> en 1962, le référendum a été organisé sur le fondement de l’article 11, et non de l’article 89 ; ce choix a été très contesté à l’époque. La carte « 1971-1974 » associe la décision « Liberté d’association » (16 juillet 1971, ce n’est pas une révision) et la révision du 29 octobre 1974. Le programme cite 2004 pour la Charte de l’environnement : elle date de 2004 et a été intégrée par la loi constitutionnelle du 1er mars 2005. 1997 : 63 députées sur 577 (10,9 %) ; 2024 : 208 élues.</p></section>
+  <section class="panel"><h2 style="margin-top:0">Chapitre 2 — L’article 89 (« évolue »)</h2><div class="tbl"><table class="corr"><tr><th>Question</th><th>Réponse</th></tr>
+    ${row("Voix nécessaires en 2008", "538 (896 × 3 ÷ 5 = 537,6)")}${qs(C2Q)}</table></div>
+    <p>Congrès du 21 juillet 2008 : 539 pour, 357 contre ; loi constitutionnelle n° 2008-724 du 23 juillet 2008.</p></section>
+  <section class="panel"><h2 style="margin-top:0">Chapitre 3 — 2024 (« avec son temps »)</h2><div class="tbl"><table class="corr"><tr><th>Question</th><th>Réponse</th></tr>${qs(C3Q)}</table></div>
+    <p>Phrase : « ${PHRASE} » (pièges : « reste figée », « contre »). Loi constitutionnelle du 8 mars 2024 relative à la liberté de recourir à l’IVG.</p></section>
+  <section class="panel"><h2 style="margin-top:0">Évaluation finale</h2><p>Sujet : « Comment la Constitution protège-t-elle nos droits et nos libertés ? Répondez en vous appuyant sur au moins deux exemples étudiés pendant la séquence. »</p>
+    <div class="tbl"><table class="corr"><tr><th>Critère</th><th>Maîtrise insuffisante</th><th>Maîtrise fragile</th><th>Maîtrise satisfaisante</th><th>Très bonne maîtrise</th></tr>
+    <tr><td>Connaissances : notions</td><td>Absentes ou erronées</td><td>1 ou 2 notions</td><td>Notions justes</td><td>Notions justes et reliées entre elles</td></tr>
+    <tr><td>Exemples</td><td>Aucun</td><td>Un exemple cité</td><td>Deux exemples expliqués</td><td>Deux exemples ou plus, reliés à la question</td></tr>
+    <tr><td>Argumentation</td><td>Pas de réponse</td><td>Réponse partielle</td><td>Réponse organisée</td><td>Organisée, nuancée, avec connecteurs</td></tr>
+    <tr><td>Expression (écrite ou orale)</td><td>Peu compréhensible</td><td>Imprécise</td><td>Claire et correcte</td><td>Claire, précise, vocabulaire maîtrisé</td></tr></table></div></section>
+  <div class="actions noprint"><button type="button" class="btn" data-act="print" data-fid="print">Imprimer le corrigé</button></div>`;
+}
+};
+function neutre(txt){ return `<section class="neutre"><strong>Point de méthode.</strong> ${txt}</section>`; }
+
+function render(focusMain){
+  closeBulle();
+  const fid = document.activeElement && document.activeElement.dataset ? document.activeElement.dataset.fid : null;
+  renderHeader();
+  for (const k in SPEAK) delete SPEAK[k]; speakId = 0;
+  document.getElementById("main").innerHTML = VIEWS[S.screen]();
+  updateTimer();
+  if (focusMain) { const h = document.querySelector("main h1"); if (h) h.focus(); window.scrollTo(0,0); }
+  else if (fid) { const el = document.querySelector(`[data-fid="${fid}"]`); if (el && !el.disabled) el.focus(); }
+}
+
+/* ================= ACTIONS ================= */
+const WORD_OF = { c1:"La République", c2:"évolue", c3:"avec son temps" };
+function win(m, quiet){
+  S[m].done = true; justPopped.push(m);
+  if (!quiet) say(m === "c3" ? "Phrase reconstituée. Bravo !" : `Chapitre réussi. Nouveau morceau de phrase : ${WORD_OF[m]}.`);
+  render();
+  const s = document.getElementById("succ-" + m); if (s && !quiet) { s.focus(); s.scrollIntoView({ block:"center" }); }
+}
+function fail(m, n){ S[m].fails++; say(`${n} réponse${n > 1 ? "s" : ""} à revoir. Elles sont marquées « à revoir ».`); render(); }
+const cqs = list => list.filter(q => !q.exp || isExp());
+const CHECK = {
+  c1(){ const m = S.c1;
+    return [UPDATES.filter(u => !m.ctx[u.id] || (isExp() && !m.who[u.id])).length,
+      UPDATES.filter(u => m.ctx[u.id] !== u.ok).length + (isExp() ? UPDATES.filter(u => m.who[u.id] !== u.who).length : 0)]; },
+  c2(){ const m = S.c2, l = cqs(C2Q);
+    return [(isExplo() || m.maj ? 0 : 1) + l.filter(q => !m.q[q.id]).length, (isExplo() || m.maj === "538" ? 0 : 1) + l.filter(q => m.q[q.id] !== q.ok).length]; },
+  c3(){ const m = S.c3, l = cqs(C3Q); const built = m.phrase.map(i => TILES[i]).join(" ");
+    return [l.filter(q => !m.q[q.id]).length + (m.phrase.length ? 0 : 1), l.filter(q => m.q[q.id] !== q.ok).length + (built === PHRASE ? 0 : 1)]; }
+};
+function fill(m){
+  if (m === "c1") { UPDATES.forEach(u => { S.c1.ctx[u.id] = u.ok; S.c1.who[u.id] = u.who; }); }
+  if (m === "c2") { S.c2.maj = "538"; C2Q.forEach(q => S.c2.q[q.id] = q.ok); }
+  if (m === "c3") { C3Q.forEach(q => S.c3.q[q.id] = q.ok); S.c3.phrase = [2,3,0]; }
+  S[m].checked = true; win(m, S.prof);
+}
+function missingMsg(n){
+  const host = document.querySelector("main .actions:last-of-type"); if (!host) return;
+  let p = document.getElementById("missingMsg"); if (!p) { p = document.createElement("p"); p.id = "missingMsg"; host.after(p); }
+  p.innerHTML = `<span class="fb bad">Il reste ${n} réponse${n > 1 ? "s" : ""} à donner avant de vérifier.</span>`;
+}
+
+document.addEventListener("click", e => {
+  if (!e.target.closest("#bulle") && !e.target.closest("button.g")) closeBulle();
+  const gb = e.target.closest("button.g"); if (gb) { e.preventDefault(); e.stopPropagation(); openBulle(gb); return; }
+  const b = e.target.closest("[data-act]"); if (!b) return;
+  const a = b.dataset.act, v = b.dataset.v;
+  if (b.getAttribute("aria-disabled") === "true" || b.disabled) return;
+  switch (a) {
+    case "speak": speak(SPEAK[b.dataset.id] || ""); break;
+    case "go": S.screen = b.dataset.to; render(true); break;
+    case "level": S.level = b.dataset.lv; render(); say("Fonction choisie : " + LEVELS[b.dataset.lv].name + "."); break;
+    case "open": S.opened = true; S.screen = "avis"; render(true); break;
+    case "vote": S.avis.vote = v; render(); break;
+    case "vote2": S.avis.vote2 = v; render(); break;
+    case "pause": S.timer.running = !S.timer.running; render(); break;
+    case "hint": S[b.dataset.m].hints++; render(); { const d = document.querySelector("details.hints"); if (d) d.open = true; } say("Nouvel indice affiché."); break;
+    case "profoff": S.prof = false; say("Mode professeur désactivé."); if (S.screen === "corrige" || !S.opened) S.screen = "home"; render(true); break;
+    case "pick": { const st = S[b.dataset.m]; st[b.dataset.s][b.dataset.q] = v; render(); break; }
+    case "ctx": S.c1.ctx[b.dataset.u] = v; render(); break;
+    case "who": S.c1.who[b.dataset.u] = v; render(); break;
+    case "c2maj": S.c2.maj = v; render(); break;
+    case "tile": S.c3.phrase.push(+b.dataset.i); S.c3.checked = false; render(); say("Mot ajouté : " + TILES[+b.dataset.i]); break;
+    case "tileback": S.c3.phrase.pop(); render(); break;
+    case "evmode": S.eval.mode = v; render(); break;
+    case "evdone": S.eval.done = true; render(); say("Évaluation terminée. Pensez à rendre votre travail."); break;
+    case "check": {
+      const m = b.dataset.m, [empty, bad] = CHECK[m]();
+      if (empty) { say(`Il reste ${empty} réponse${empty > 1 ? "s" : ""} à donner avant de vérifier.`); missingMsg(empty); return; }
+      S[m].checked = true; bad ? fail(m, bad) : win(m); break;
+    }
+    case "solution": fill(b.dataset.m); break;
+    case "print": window.print(); break;
+  }
+});
+document.addEventListener("change", e => {
+  const t = e.target;
+  if (t.dataset.act === "evcrit") { S.eval.crit[t.dataset.c] = t.checked; }
+  if (t.dataset.act === "evaudio") { S.eval.audio = t.checked; }
+});
+document.addEventListener("input", e => {
+  const t = e.target;
+  if (t.dataset.act === "evtext") { S.eval.text = t.value; const n = wordCount(t.value); const w = document.getElementById("wc"); if (w) w.textContent = `${n} mot${n > 1 ? "s" : ""}. Un bon paragraphe compte souvent entre 120 et 200 mots.`; }
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && bulleSrc) closeBulle(true);
+  if (e.key === "Enter" && e.target.id === "profCode") document.getElementById("profOk").click();
+});
+window.addEventListener("resize", () => closeBulle());
+document.getElementById("openProf").onclick = () => { document.getElementById("profMsg").textContent = ""; document.getElementById("profCode").value = ""; document.getElementById("profDlg").showModal(); };
+document.getElementById("profOk").onclick = () => {
+  const v = document.getElementById("profCode").value.trim().toUpperCase();
+  if (v === PROF_CODE.toUpperCase()) { S.prof = true; document.getElementById("profDlg").close(); say("Mode professeur activé. Les réponses sont affichées."); render(true); }
+  else document.getElementById("profMsg").textContent = "Code incorrect.";
+};
+
+/* ================= MON TRAVAIL : configuration ================= */
+window.WORK_CFG = {
+  id:"emc3-s4-revisions", title:"EMC 3e — Séance 4 : Les mises à jour de la Constitution", prefix:"emc-seance4",
+  snapshot:() => JSON.parse(JSON.stringify({ screen:S.screen, level:S.level, opened:S.opened, avis:S.avis, c1:S.c1, c2:S.c2, c3:S.c3, eval:S.eval })),
+  restore:o => {
+    Object.assign(S, fresh(), { level:o.level || null, opened:!!o.opened });
+    ["avis","c1","c2","c3","eval"].forEach(k => { if (o[k]) Object.assign(S[k], o[k]); });
+    const ok = o.screen && VIEWS[o.screen] && o.screen !== "corrige" && (o.opened || o.screen === "home") && (!["eval","bilan"].includes(o.screen) || S.c3.done);
+    S.screen = ok ? o.screen : "home"; clearInterval(tick);
+  },
+  reset:() => { const p = S.prof; Object.assign(S, fresh(), { level:null, opened:false, prof:p, screen:"home" }); clearInterval(tick); },
+  recap:() => {
+    const R = [];
+    const st = m => (S[m].done ? "Chapitre réussi" : S[m].checked ? "Chapitre commencé, pas encore réussi" : "Chapitre non terminé") + ` (indices utilisés : ${S[m].hints})`;
+    R.push({ q:"Fonction choisie", a:S.level ? LEVELS[S.level].name : "—" });
+    if (S.eval.mode) {
+      R.push({ h:"Évaluation finale" }, { q:"Sujet", a:"Comment la Constitution protège-t-elle nos droits et nos libertés ? Répondez en vous appuyant sur au moins deux exemples étudiés pendant la séquence." });
+      if (S.eval.mode === "ecrit") R.push({ q:`Mon paragraphe (${wordCount(S.eval.text)} mots)`, a:S.eval.text || "—" });
+      else R.push({ q:"Capsule audio", a:S.eval.audio ? "Enregistrée et déposée sur Éléa" : "Pas encore déposée" });
+      R.push({ q:"Ma vérification", a:CRIT.map(c => (S.eval.crit[c.id] ? "☑ " : "☐ ") + c.label).join("\n") });
+    }
+    R.push({ h:"Ton avis" }, { q:"La Constitution de 1958 peut-elle encore convenir à notre époque ?", a:labelOf(VOTES, S.avis.vote) || "—" });
+    R.push({ h:"Chapitre 1 — Les mises à jour" }, { q:"Bilan", a:st("c1") });
+    UPDATES.forEach(u => { let a = CTX[S.c1.ctx[u.id]] || "—"; if (S.c1.who[u.id]) a += "\nQui a décidé : " + labelOf(WHO, S.c1.who[u.id]); R.push({ q:`Mise à jour ${u.v} : pourquoi ?`, a }); });
+    R.push({ h:"Chapitre 2 — Qui peut mettre à jour la Constitution ?" }, { q:"Bilan", a:st("c2") });
+    if (!isExplo()) R.push({ q:"Voix nécessaires en 2008", a:labelOf(C2MAJ, S.c2.maj) || "—" });
+    cqs(C2Q).forEach(q => R.push({ q:q.q, a:labelOf(q.opts, S.c2.q[q.id]) || "—" }));
+    R.push({ h:"Chapitre 3 — La dernière mise à jour : 2024" }, { q:"Bilan", a:st("c3") });
+    cqs(C3Q).forEach(q => R.push({ q:q.q, a:labelOf(q.opts, S.c3.q[q.id]) || "—" }));
+    R.push({ q:"La phrase reconstituée", a:S.c3.phrase.length ? S.c3.phrase.map(i => TILES[i]).join(" ") : "—" });
+    R.push({ h:"Bilan" }, { q:"Ton avis à la fin de la séance", a:labelOf(VOTES, S.avis.vote2) || "—" });
+    return R;
+  }
+};
+
+/* ================= MON TRAVAIL : sauvegarde, reprise, export, effacement ================= */
+(function(){
+  const CFG = window.WORK_CFG;
+  const KEY = "emc3-travail-" + CFG.id;
+  let eleve = "";
+  let dlNs; let dlReady = false;
+  try { if (window.claude && typeof window.claude.use === "function") window.claude.use("downloads").then(ns => { dlNs = ns; dlReady = true; }).catch(() => { dlReady = true; }); else dlReady = true; } catch(e) { dlReady = true; }
+
+  /* ---------- Interface ---------- */
+  const css = document.createElement("style");
+  css.textContent = `
+  #workDlg section{ border:2px solid var(--line); border-radius:10px; padding:.7rem .9rem; margin:.7rem 0; }
+  #workDlg h3{ margin:.1rem 0 .4rem; color:var(--bleu-txt); }
+  #workDlg .row{ display:flex; gap:.5rem; flex-wrap:wrap; align-items:center; }
+  #workDlg input[type=text]{ width:100%; font-size:1.05rem; padding:.45rem; border:2px solid var(--line); border-radius:8px; background:var(--surface); }
+  #workDlg .petit{ font-size:.92rem; color:var(--muted); }
+  #workDlg .alerte{ border:3px solid #C9191E; background:var(--rouge-soft); border-radius:10px; padding:.7rem .9rem; margin-top:.6rem; }
+  #workDlg .choix{ border:2px dashed var(--bleu); border-radius:10px; padding:.6rem .8rem; margin-top:.6rem; }
+  #workDlg .msg{ font-weight:700; margin:.4rem 0 0; }
+  #workDlg .zero h3{ color:var(--rouge); }
+  :root[data-contrast="high"] #workDlg .zero h3{ color:#FFE600; }`;
+  document.head.appendChild(css);
+
+  const hb = document.createElement("button");
+  hb.className = "hbtn"; hb.type = "button"; hb.id = "openWork"; hb.setAttribute("aria-haspopup","dialog");
+  hb.textContent = "📁 Mon travail";
+  const lexBtn = document.getElementById("openLex"); lexBtn.parentNode.insertBefore(hb, lexBtn);
+
+  const dlg = document.createElement("dialog");
+  dlg.id = "workDlg"; dlg.setAttribute("aria-labelledby","workT");
+  dlg.innerHTML = `
+  <h2 id="workT" style="margin-top:0">Mon travail</h2>
+  <section aria-labelledby="w1"><h3 id="w1">Rendre mon travail</h3>
+    <label for="wEleve"><strong>Prénom, nom et classe</strong></label>
+    <input id="wEleve" type="text" autocomplete="off" placeholder="Ex. : Léa Martin, 3eB">
+    <p class="petit">Télécharge tes réponses, puis dépose le fichier dans le devoir Éléa.</p>
+    <div class="row"><button type="button" class="btn" id="wDl" aria-expanded="false" aria-controls="wChoix">Télécharger mes réponses</button></div>
+    <div class="choix" id="wChoix" hidden><p style="margin:.1rem 0 .5rem"><strong>Dans quel format ?</strong></p>
+      <div class="row"><button type="button" class="btn" id="wDocx">📄 Document Word (.docx)</button><button type="button" class="btn" id="wPdf">📑 PDF</button><button type="button" class="btn ghost" id="wDlNo">Annuler</button></div></div>
+    <p class="msg" id="wMsg1" role="status"></p></section>
+  <section aria-labelledby="w2"><h3 id="w2">Sauvegarder pour reprendre plus tard</h3>
+    <p class="petit">Sur cet appareil, ton travail est enregistré automatiquement. Pour le reprendre sur un autre ordinateur, télécharge ta sauvegarde et range-la (clé USB, ENT, Éléa).</p>
+    <div class="row"><button type="button" class="btn" id="wSave">💾 Télécharger ma sauvegarde</button>
+      <button type="button" class="btn ghost" id="wLoad">📂 Reprendre un travail sauvegardé</button>
+      <input type="file" id="wFile" accept=".json,application/json" hidden></div>
+    <div class="choix" id="wLoadOk" hidden></div>
+    <p class="msg" id="wMsg2" role="status"></p></section>
+  <section class="zero" aria-labelledby="w3"><h3 id="w3">Recommencer à zéro</h3>
+    <p class="petit">Efface toutes tes réponses sur cet appareil. Pense à télécharger ta sauvegarde avant, si tu veux garder ton travail.</p>
+    <div class="row"><button type="button" class="btn ghost" id="wReset" aria-expanded="false" aria-controls="wConfirm">Recommencer à zéro</button></div>
+    <div class="alerte" id="wConfirm" hidden role="alertdialog" aria-labelledby="wcT"><p id="wcT" style="margin-top:0"><strong>⚠ Es-tu sûr(e) ?</strong> Toutes tes réponses seront définitivement effacées.</p>
+      <div class="row"><button type="button" class="btn rouge" id="wResetYes">Oui, tout effacer</button><button type="button" class="btn ghost" id="wResetNo">Non, garder mes réponses</button></div></div>
+    <p class="msg" id="wMsg3" role="status"></p></section>
+  <div class="actions"><button type="button" class="btn" id="wClose">Fermer</button></div>`;
+  document.body.appendChild(dlg);
+  const $ = id => document.getElementById(id);
+  const msg = (n, t) => { $("wMsg" + n).textContent = t; };
+  function openWork(confirmReset){
+    $("wEleve").value = eleve; ["wChoix","wConfirm","wLoadOk"].forEach(i => $(i).hidden = true);
+    [1,2,3].forEach(n => msg(n,"")); $("wDl").setAttribute("aria-expanded","false"); $("wReset").setAttribute("aria-expanded","false");
+    if (!dlg.open) dlg.showModal();
+    if (confirmReset) { $("wConfirm").hidden = false; $("wReset").setAttribute("aria-expanded","true"); $("wResetNo").focus(); }
+  }
+  hb.onclick = () => openWork(false);
+  $("wClose").onclick = () => dlg.close();
+  $("wEleve").addEventListener("input", e => { eleve = e.target.value; saveLocal(); });
+  document.addEventListener("click", e => {
+    const b = e.target.closest('[data-act="openwork"], [data-act="restart"]');
+    if (!b) return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    openWork(b.dataset.act === "restart");
+  }, true);
+
+  /* ---------- Enregistrement automatique ---------- */
+  function payload(){ return { app:CFG.id, titre:CFG.title, version:1, date:new Date().toISOString(), eleve, state:CFG.snapshot() }; }
+  function saveLocal(){ try { localStorage.setItem(KEY, JSON.stringify(payload())); } catch(e) {} }
+  const baseRender = render;
+  render = function(f){ baseRender(f); saveLocal(); };
+  let tSave = null;
+  document.addEventListener("input", () => { clearTimeout(tSave); tSave = setTimeout(saveLocal, 400); });
+  try { const raw = localStorage.getItem(KEY); if (raw) { const o = JSON.parse(raw); if (o && o.app === CFG.id && o.state) { eleve = o.eleve || ""; CFG.restore(o.state); } } } catch(e) {}
+
+  /* ---------- Fichiers ---------- */
+  const slug = t => (t || "eleve").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"") || "eleve";
+  async function offerFile(filename, bytes, mime){
+    if (!dlReady && window.claude) { await new Promise(r => setTimeout(r, 800)); }
+    if (dlNs) {
+      try { await dlNs.save({ filename, data:new Blob([bytes], { type:mime }) }); return "ok"; }
+      catch(e) { if (e && e.code === "declined") return "declined"; if (e && e.code === "rate_limited") return "busy"; if (e && e.code === "extension_not_enabled") return "format"; }
+    }
+    try {
+      const url = URL.createObjectURL(new Blob([bytes], { type:mime }));
+      const a = document.createElement("a"); a.href = url; a.download = filename; document.body.appendChild(a); a.click();
+      setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 1500); return "ok";
+    } catch(e) { return "fail"; }
+  }
+  const status = r => r === "ok" ? "C’est fait. Retrouve le fichier dans tes téléchargements." : r === "declined" ? "Téléchargement annulé." : r === "busy" ? "Une fenêtre de téléchargement est déjà ouverte : termine-la d’abord." : r === "format" ? "Ce format n’est pas disponible ici. Essaie l’autre format." : "Le téléchargement n’a pas fonctionné sur cet appareil. Demande de l’aide à ton professeur.";
+
+  /* Sauvegarde / reprise */
+  $("wSave").onclick = async () => {
+    const r = await offerFile(`sauvegarde-${CFG.prefix}-${slug(eleve)}.json`, new TextEncoder().encode(JSON.stringify(payload(), null, 1)), "application/json");
+    msg(2, r === "ok" ? "Sauvegarde téléchargée. Range ce fichier pour reprendre ton travail plus tard." : status(r));
+  };
+  $("wLoad").onclick = () => { $("wFile").value = ""; $("wFile").click(); };
+  let pending = null;
+  $("wFile").addEventListener("change", e => {
+    const f = e.target.files && e.target.files[0]; if (!f) return;
+    const rd = new FileReader();
+    rd.onload = () => {
+      let o = null; try { o = JSON.parse(rd.result); } catch(err) {}
+      if (!o || o.app !== CFG.id || !o.state) { pending = null; $("wLoadOk").hidden = true; msg(2, "Ce fichier n’est pas une sauvegarde de cette activité. Vérifie que tu as choisi le bon fichier."); return; }
+      pending = o;
+      const d = o.date ? new Date(o.date).toLocaleString("fr-FR", { dateStyle:"long", timeStyle:"short" }) : "date inconnue";
+      $("wLoadOk").hidden = false;
+      $("wLoadOk").innerHTML = `<p style="margin-top:0">Sauvegarde de <strong>${(o.eleve || "nom non renseigné").replace(/[<>&]/g,"")}</strong>, du ${d}. Ton travail actuel sur cet appareil sera remplacé.</p>
+        <div class="row"><button type="button" class="btn" id="wLoadYes">Oui, reprendre ce travail</button><button type="button" class="btn ghost" id="wLoadNo">Annuler</button></div>`;
+      $("wLoadYes").onclick = () => { eleve = pending.eleve || ""; CFG.restore(pending.state); pending = null; dlg.close(); render(true); say("Travail repris. Tu peux continuer là où tu t’étais arrêté."); };
+      $("wLoadNo").onclick = () => { pending = null; $("wLoadOk").hidden = true; msg(2, "Reprise annulée."); };
+      $("wLoadYes").focus();
+    };
+    rd.readAsText(f);
+  });
+
+  /* Effacement */
+  $("wReset").onclick = () => { const h = !$("wConfirm").hidden; $("wConfirm").hidden = h; $("wReset").setAttribute("aria-expanded", String(!h)); if (!h) $("wResetNo").focus(); };
+  $("wResetNo").onclick = () => { $("wConfirm").hidden = true; $("wReset").setAttribute("aria-expanded","false"); msg(3, "Tes réponses sont conservées."); };
+  $("wResetYes").onclick = () => {
+    CFG.reset(); try { localStorage.removeItem(KEY); } catch(e) {}
+    dlg.close(); render(true); say("Toutes les réponses ont été effacées.");
+  };
+
+  /* ---------- Export ---------- */
+  $("wDl").onclick = () => { const h = !$("wChoix").hidden; $("wChoix").hidden = h; $("wDl").setAttribute("aria-expanded", String(!h)); };
+  $("wDlNo").onclick = () => { $("wChoix").hidden = true; $("wDl").setAttribute("aria-expanded","false"); };
+  function items(){
+    const d = new Date().toLocaleDateString("fr-FR", { dateStyle:"long" });
+    return [{ title:CFG.title }, { meta:`Élève : ${eleve || "(nom non renseigné)"} — ${d}` }, ...CFG.recap()];
+  }
+  /* Word */
+  const CRC = (() => { const t = new Uint32Array(256); for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();
+  const crc32 = b => { let c = 0xFFFFFFFF; for (let i = 0; i < b.length; i++) c = CRC[(c ^ b[i]) & 0xFF] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; };
+  function zip(files){
+    const enc = new TextEncoder(); const parts = []; const cent = []; let off = 0;
+    for (const f of files) {
+      const name = enc.encode(f.name), data = typeof f.data === "string" ? enc.encode(f.data) : f.data, crc = crc32(data);
+      const h = new DataView(new ArrayBuffer(30));
+      h.setUint32(0,0x04034b50,true); h.setUint16(4,20,true); h.setUint16(6,0x0800,true); h.setUint16(8,0,true); h.setUint16(10,0,true); h.setUint16(12,0x21,true);
+      h.setUint32(14,crc,true); h.setUint32(18,data.length,true); h.setUint32(22,data.length,true); h.setUint16(26,name.length,true); h.setUint16(28,0,true);
+      parts.push(new Uint8Array(h.buffer), name, data);
+      const c = new DataView(new ArrayBuffer(46));
+      c.setUint32(0,0x02014b50,true); c.setUint16(4,20,true); c.setUint16(6,20,true); c.setUint16(8,0x0800,true); c.setUint16(10,0,true); c.setUint16(12,0,true); c.setUint16(14,0x21,true);
+      c.setUint32(16,crc,true); c.setUint32(20,data.length,true); c.setUint32(24,data.length,true); c.setUint16(28,name.length,true);
+      c.setUint32(42,off,true);
+      cent.push(new Uint8Array(c.buffer), name);
+      off += 30 + name.length + data.length;
+    }
+    const csize = cent.reduce((s,p) => s + p.length, 0);
+    const e = new DataView(new ArrayBuffer(22));
+    e.setUint32(0,0x06054b50,true); e.setUint16(8,files.length,true); e.setUint16(10,files.length,true); e.setUint32(12,csize,true); e.setUint32(16,off,true);
+    const all = [...parts, ...cent, new Uint8Array(e.buffer)]; const out = new Uint8Array(all.reduce((s,p) => s + p.length, 0));
+    let p = 0; for (const a of all) { out.set(a, p); p += a.length; } return out;
+  }
+  const xe = t => String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  function para(text, o = {}){
+    const rpr = `<w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:cs="Calibri"/>${o.b ? "<w:b/>" : ""}${o.color ? `<w:color w:val="${o.color}"/>` : ""}<w:sz w:val="${o.size || 22}"/></w:rPr>`;
+    const ppr = `<w:pPr><w:spacing w:before="${o.before || 0}" w:after="${o.after == null ? 80 : o.after}"/>${o.ind ? '<w:ind w:left="360"/>' : ""}</w:pPr>`;
+    return `<w:p>${ppr}<w:r>${rpr}<w:t xml:space="preserve">${xe(text)}</w:t></w:r></w:p>`;
+  }
+  function buildDocx(){
+    let body = "";
+    for (const it of items()) {
+      if (it.title) body += para(it.title, { b:true, size:34, color:"000091", after:120 });
+      else if (it.meta) body += para(it.meta, { size:20, color:"555555", after:240 });
+      else if (it.h) body += para(it.h, { b:true, size:28, color:"C9191E", before:240, after:120 });
+      else if (it.q != null) { body += para(it.q, { b:true, before:80, after:40 }); String(it.a || "—").split("\n").forEach(l => body += para(l || " ", { ind:true, after:40 })); }
+    }
+    const doc = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>${body}<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134" w:header="0" w:footer="0" w:gutter="0"/></w:sectPr></w:body></w:document>`;
+    return zip([
+      { name:"[Content_Types].xml", data:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>' },
+      { name:"_rels/.rels", data:'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>' },
+      { name:"word/document.xml", data:doc }
+    ]);
+  }
+  $("wDocx").onclick = async () => {
+    msg(1, "Préparation du document…");
+    const r = await offerFile(`${CFG.prefix}-${slug(eleve)}.docx`, buildDocx(), "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+    msg(1, status(r));
+  };
+  /* PDF (jsPDF, chargé à la demande) */
+  function loadJsPDF(){
+    return new Promise((res, rej) => {
+      if (window.jspdf) return res(window.jspdf);
+      const s = document.createElement("script"); s.src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
+      s.onload = () => window.jspdf ? res(window.jspdf) : rej(); s.onerror = rej; document.head.appendChild(s);
+    });
+  }
+  const latin = t => String(t).replace(/[’‘]/g,"'").replace(/[“”]/g,'"').replace(/[—–]/g,"-").replace(/…/g,"...").replace(/œ/g,"oe").replace(/Œ/g,"OE").replace(/[\u202F\u00A0]/g," ").replace(/[^\x09\x0A\x20-\x7E\xA0-\xFF]/g,"");
+  $("wPdf").onclick = async () => {
+    msg(1, "Préparation du PDF…");
+    let lib; try { lib = await loadJsPDF(); } catch(e) { msg(1, "Le PDF ne peut pas être créé sans connexion. Télécharge le document Word, puis enregistre-le en PDF."); return; }
+    const pdf = new lib.jsPDF({ unit:"mm", format:"a4" }); const W = 180, X = 15; let y = 18;
+    const line = (txt, size, style, color, indent = 0, gap = 1.5) => {
+      pdf.setFont("helvetica", style); pdf.setFontSize(size); pdf.setTextColor(...color);
+      const ls = pdf.splitTextToSize(latin(txt), W - indent); const lh = size * 0.42;
+      for (const l of ls) { if (y > 282) { pdf.addPage(); y = 18; } pdf.text(l, X + indent, y); y += lh; }
+      y += gap;
+    };
+    for (const it of items()) {
+      if (it.title) line(it.title, 16, "bold", [0,0,145], 0, 2);
+      else if (it.meta) line(it.meta, 10, "normal", [85,85,85], 0, 5);
+      else if (it.h) { y += 3; line(it.h, 13, "bold", [201,25,30], 0, 2); }
+      else if (it.q != null) { line(it.q, 11, "bold", [20,20,20], 0, 0.5); String(it.a || "—").split("\n").forEach(l => line(l || " ", 11, "normal", [20,20,20], 5, 0.5)); y += 1.5; }
+    }
+    const r = await offerFile(`${CFG.prefix}-${slug(eleve)}.pdf`, pdf.output("arraybuffer"), "application/pdf");
+    msg(1, status(r));
+  };
+})();
+
+render();
+</script>
+</body>
+</html>
